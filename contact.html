@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Contact — Herbie PC Care · 0920-857-0392 · Tondo, Manila</title>
+<meta name="description" content="Call 0920-857-0392, drop by 205 San Pedro St in Tondo, or book a home pickup anywhere in Metro Manila. We answer the line ourselves." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,30..100&family=JetBrains+Mono:wght@400;500;700&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+.contact{padding:120px 0;background:var(--paper)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start}
+@media (max-width:980px){.contact-grid{grid-template-columns:1fr;gap:40px}}
+
+.phonecard{background:var(--ink);color:var(--paper);border:1px solid var(--ink);border-radius:20px;padding:36px;font-family:var(--mono);position:relative;overflow:hidden;box-shadow:0 30px 60px -36px rgba(14,16,20,.4)}
+.phonecard::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg, var(--accent), transparent)}
+.phonecard .lbl{font-size:11px;letter-spacing:.18em;color:var(--steel);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.phonecard .lbl .live{width:7px;height:7px;border-radius:50%;background:#3DDC84;box-shadow:0 0 10px #3DDC84;animation:pulse 1.4s infinite}
+.phonecard .num{font-family:var(--serif);font-weight:380;font-size:48px;letter-spacing:-.02em;color:var(--paper);line-height:1;margin-bottom:24px;display:block}
+.phonecard .row{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:12px 0;border-top:1px dashed var(--line-d)}
+.phonecard .row span:first-child{color:var(--steel)}
+.phonecard .row span:last-child{color:var(--paper)}
+.phonecard .btn-row{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.phonecard .btn{flex:1;justify-content:center;min-width:0}
+
+.form{background:var(--paper);border:1px solid var(--line-l);border-radius:20px;padding:36px}
+.form .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--rust);text-transform:uppercase;margin-bottom:6px}
+.form h3{font-family:var(--serif);font-weight:500;font-size:28px;letter-spacing:-.01em;color:var(--ink);margin-bottom:8px}
+.form .sub{font-size:14.5px;color:#3A3D43;line-height:1.6;margin-bottom:28px}
+.field{margin-bottom:20px}
+.field label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--steel);text-transform:uppercase;margin-bottom:8px}
+.field input, .field select, .field textarea{width:100%;padding:14px 16px;background:var(--paper-2);border:1px solid var(--line-l);border-radius:10px;font:inherit;font-size:15px;color:var(--ink);transition:border-color .2s, background .2s}
+.field input:focus, .field select:focus, .field textarea:focus{outline:none;border-color:var(--rust);background:#fff}
+.field textarea{min-height:120px;resize:vertical;font-family:inherit}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:560px){.field-row{grid-template-columns:1fr}}
+.form .note{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--steel);margin-top:18px;text-align:center;line-height:1.6}
+
+.maparea{padding:0 0 120px;background:var(--paper)}
+.map-wrap{aspect-ratio:21/9;border:1px solid var(--line-l);border-radius:24px;position:relative;overflow:hidden;box-shadow:0 30px 60px -36px rgba(14,16,20,.3)}
+.map-wrap iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(.15) contrast(.96) sepia(.08)}
+.map-card{position:absolute;left:24px;bottom:24px;background:var(--paper);border:1px solid var(--line-l);border-radius:14px;padding:18px 20px;max-width:280px;box-shadow:0 12px 30px -14px rgba(14,16,20,.35)}
+.map-card .eye{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--rust);text-transform:uppercase;margin-bottom:6px}
+.map-card .name{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:-.01em;color:var(--ink);line-height:1.15}
+.map-card .sub{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:#3A3D43;margin-top:6px;text-transform:uppercase}
+.map-card a.link{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--rust);padding-bottom:2px;transition:color .2s}
+.map-card a.link:hover{color:var(--rust)}
+
+.form.is-sent > *:not(.form-success){display:none}
+.form.is-sent .form-success{display:block;animation:formIn .55s cubic-bezier(.2,.7,.2,1)}
+@keyframes formIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.coverage-strip{padding:80px 0;background:var(--paper-2)}
+.cov-list{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line-l);font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+@media (max-width:720px){.cov-list{grid-template-columns:repeat(2,1fr)}}
+.cov-list li{padding:18px 0;border-bottom:1px solid var(--line-l);display:flex;align-items:center;gap:10px;color:var(--ink)}
+.cov-list li::before{content:"●";color:var(--rust);font-size:9px}
+</style>
+</head>
+<body>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollBar" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav-row">
+    <a class="brand" href="index.html">
+      <span class="mark">H<span style="font-size:7px;align-self:flex-start;margin-top:2px">PC</span></span>
+      <span>Herbie<span style="opacity:.55"> · </span>PC Care</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#services">Services</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html" class="is-on">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <span class="nav-phone"><span class="live"></span><span>Open · </span><a href="tel:09208570392">0920-857-0392</a></span>
+      <a class="btn btn-accent" href="tel:09208570392"><span>Book Clean</span><span class="arr">→</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero-bg" style="--hero-img:url('https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=2400&q=80')"></div>
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Home</a><span class="sep">/</span><span>Contact</span></div>
+    <h1>Get in <em>touch.</em></h1>
+    <p class="lede">Call the shop, drop a message, or just walk in. We answer the line ourselves — no menus, no hold music, no callbacks tomorrow.</p>
+    <div class="meta-row">
+      <span><b>Direct line</b> · 0920-857-0392</span>
+      <span><b>Hours</b> · Mon–Sat · 9 am – 7 pm</span>
+      <span><b>Address</b> · 205 San Pedro St, Tondo</span>
+      <span><b>Response</b> · &lt; 5 minutes</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="phonecard reveal">
+        <div class="lbl"><span class="live"></span>Direct line · open now</div>
+        <a class="num" href="tel:09208570392">0920·857·0392</a>
+        <div class="row"><span>Hours</span><span>Mon–Sat · 9am–7pm</span></div>
+        <div class="row"><span>Address</span><span>205 San Pedro St, Tondo</span></div>
+        <div class="row"><span>SMS / Viber</span><span>Same number</span></div>
+        <div class="row"><span>Avg. response</span><span>&lt; 5 minutes</span></div>
+        <div class="row"><span>Home service</span><span>+ minimal transport fee</span></div>
+        <div class="btn-row">
+          <a class="btn btn-accent" href="tel:09208570392"><span>Call</span><span class="arr">→</span></a>
+          <a class="btn btn-ghost-d" href="sms:09208570392"><span>SMS</span><span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="hero-card reveal" style="margin-top:18px;aspect-ratio:5/3;background-image:url('https://images.pexels.com/photos/4792733/pexels-photo-4792733.jpeg?auto=compress&cs=tinysrgb&w=1600')">
+        <span class="stamp">Workshop · 205 San Pedro St</span>
+        <span class="corner">// SHOP-A1</span>
+      </div>
+    </div>
+
+    <form class="form reveal" id="intakeForm" action="https://formsubmit.co/contact@deskwolf.ai" method="POST">
+      <input type="hidden" name="_subject" value="New intake — Herbie PC Care">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <div class="lbl">// Service Intake</div>
+      <h3>Or send us your details.</h3>
+      <p class="sub">We'll read every message, but the fastest way to lock a slot is the phone — we typically pick up in under five minutes.</p>
+      <div class="form-success" hidden>
+        <div class="lbl" style="color:var(--accent);background:var(--ink);padding:6px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)"></span>Sent · we'll call you shortly</div>
+        <h3 style="margin-top:14px">Got it — message in.</h3>
+        <p class="sub">Your intake is on its way to the bench. If you want to lock the slot now, ring <a href="tel:09208570392" style="color:var(--rust);text-decoration:underline">0920-857-0392</a> — we usually pick up in under 5 minutes.</p>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="name">Full Name</label>
+          <input id="name" name="name" type="text" placeholder="Juan dela Cruz" required>
+        </div>
+        <div class="field">
+          <label for="phone">Phone / Viber</label>
+          <input id="phone" name="phone" type="tel" placeholder="09XX-XXX-XXXX" required>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="unit">Unit Type</label>
+          <select id="unit" name="unit">
+            <option>Desktop PC</option>
+            <option>Laptop</option>
+            <option>Gaming Rig</option>
+            <option>Workstation</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="service">Service</label>
+          <select id="service" name="service">
+            <option>Refresh — light clean</option>
+            <option>Deep Clean — full teardown</option>
+            <option>Overhaul — clean + parts</option>
+            <option>Free walk-in diagnostic</option>
+            <option>Not sure — please advise</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="msg">Symptoms / Notes</label>
+        <textarea id="msg" name="msg" placeholder="e.g. Fan is loud all the time, PC shuts down during games, dust in the case visible through side panel..."></textarea>
+      </div>
+      <button class="btn btn-ink" type="submit" style="width:100%;justify-content:center"><span>Send Intake</span><span class="arr">→</span></button>
+      <p class="note">By sending you agree to be contacted about your enquiry. See <a href="privacy.html" style="color:var(--rust);text-decoration:underline">Privacy Policy</a>.</p>
+    </form>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="maparea">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--rust);margin-bottom:18px">[ Find the Shop ]</div>
+    <h2 style="margin-bottom:30px">205 San Pedro St,<br><em>Tondo, Manila.</em></h2>
+    <div class="map-wrap reveal">
+      <iframe
+        src="https://www.google.com/maps?q=205+San+Pedro+St,+Tondo,+Manila,+Metro+Manila&hl=en&z=15&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Herbie PC Care — 205 San Pedro St, Tondo, Manila"></iframe>
+      <div class="map-card">
+        <div class="eye">// SHOP LOCATION</div>
+        <div class="name">205 San Pedro St</div>
+        <div class="sub">Tondo, Manila</div>
+        <a class="link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=205+San+Pedro+St,+Tondo,+Manila">Get directions →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE STRIP -->
+<section class="coverage-strip">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--rust);margin-bottom:18px">[ Pickup &amp; Home Service Areas ]</div>
+    <h2 style="margin-bottom:30px;font-size:clamp(28px,3.4vw,44px)">We come to <em>you.</em></h2>
+    <ul class="cov-list">
+      <li>Tondo</li>
+      <li>Binondo</li>
+      <li>Sta. Cruz</li>
+      <li>San Nicolas</li>
+      <li>Quiapo</li>
+      <li>Sampaloc</li>
+      <li>Manila CBD</li>
+      <li>+ Metro-wide pickup</li>
+    </ul>
+    <p style="margin-top:24px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--steel);text-transform:uppercase">Home service available citywide · minimal transportation fee applies</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:18px;display:inline-flex">
+          <span class="mark">H<span style="font-size:7px;align-self:flex-start;margin-top:2px">PC</span></span>
+          <span>Herbie<span style="opacity:.55"> · </span>PC Care</span>
+        </a>
+        <p>A small shop in Tondo doing one thing carefully: keeping your PC cool, quiet, and breathing.</p>
+      </div>
+      <div>
+        <h5>Site</h5>
+        <ul>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Visit</h5>
+        <ul>
+          <li>205 San Pedro St</li>
+          <li>Tondo, Manila</li>
+          <li style="margin-top:10px;color:var(--accent)">Mon–Sat · 9am–7pm</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms &amp; Conditions</a></li>
+          <li style="margin-top:10px"><a href="tel:09208570392" style="color:var(--accent);opacity:1">0920-857-0392</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Herbie PC Care · Tondo, Manila</span>
+      <span>Built clean · Run cool</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FAB STACK -->
+<div class="fab-stack" aria-label="Quick contact">
+  <a class="fab fab-wa" href="https://wa.me/639208570392?text=Hi%20Herbie%2C%20I%27d%20like%20to%20book%20a%20clean." target="_blank" rel="noopener" aria-label="WhatsApp 0920-857-0392">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.16 5.335 5.495 0 12.05 0c3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.983zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+  </a>
+  <a class="fab fab-viber" href="viber://chat?number=%2B639208570392" aria-label="Viber 0920-857-0392">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.398.002C9.473.028 5.331.344 3.014 2.467 1.294 4.187.687 6.7.621 9.81c-.061 3.108-.135 8.933 5.487 10.516h.005l-.003 2.414s-.036.977.608 1.177c.83.281 1.246-.487 2.043-1.248l1.434-1.622c3.844.323 6.787-.405 7.124-.516.773-.252 5.156-.812 5.866-6.628.732-5.998-.358-9.795-2.328-11.51l-.011-.011C19.213.804 16.232.066 13.197.014c0 0-.225-.014-.704-.014h-1.094zm.063 1.694c.4.001.946 0 1.34.014 2.768.044 5.397.812 7.196 2.226 1.706 1.46 2.575 4.624 1.949 9.617-.6 4.881-4.114 5.187-4.768 5.397-.279.089-2.852.728-6.078.515 0 0-2.408 2.91-3.157 3.658-.117.117-.255.164-.347.141-.131-.032-.167-.187-.165-.414l.027-4.005c-4.764-1.32-4.486-6.286-4.434-8.884.057-2.598.546-4.733 1.997-6.165 1.453-1.434 4.969-2.524 6.016-2.528h.424zm.317 2.802a.355.355 0 00-.029.708c.937.062 1.713.394 2.366 1.04.654.647.997 1.564 1.057 2.69a.355.355 0 10.71-.04c-.067-1.31-.475-2.404-1.225-3.172-.752-.77-1.737-1.158-2.86-1.226zM6.93 5.4c-.27.04-.514.214-.638.473-.31.65-.165 1.293.247 1.875.412.582 1.036 1.114 1.715 1.62.679.507 1.342 1.025 1.965 1.469 1.083.766 2.003 1.222 2.713 1.295.366.038.683-.005.946-.12.263-.115.481-.318.6-.594.142-.331.232-.755.288-1.099.056-.345.099-.654.099-.926 0-.13-.024-.258-.072-.379a.355.355 0 00-.243-.208l-.79-.282-.81-.288a.355.355 0 00-.45.134l-.38.557c-.186.27-.396.25-.396.25s-1.026-.376-1.823-1.176c-.795-.797-1.176-1.823-1.176-1.823s-.022-.214.249-.4l.557-.38a.355.355 0 00.133-.45l-.288-.81-.282-.79a.355.355 0 00-.208-.243.882.882 0 00-.378-.072c-.272 0-.582.043-.926.099-.346.056-.768.146-1.099.288z"/></svg>
+  </a>
+  <a class="fab fab-call" href="tel:09208570392" aria-label="Call 0920-857-0392">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.487 17.14l-4.065-3.696a1.001 1.001 0 00-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 00.043-1.391L6.859 3.513a1 1 0 00-1.391-.087l-2.17 1.861a1 1 0 00-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 00.648-.291l1.86-2.171a.997.997 0 00-.085-1.39z"/></svg>
+  </a>
+</div>
+
+<script>
+  // intercept form submit and POST via fetch so user stays on page
+  const intake = document.getElementById('intakeForm');
+  if(intake){
+    intake.addEventListener('submit', async (e)=>{
+      // honeypot — if filled, silently fake-success
+      if(intake.querySelector('input[name="_honey"]').value){
+        e.preventDefault(); intake.classList.add('is-sent'); return;
+      }
+      e.preventDefault();
+      const data = new FormData(intake);
+      try{
+        const res = await fetch(intake.action, {method:'POST', body:data, headers:{'Accept':'application/json'}});
+        if(res.ok){
+          intake.classList.add('is-sent');
+          intake.scrollIntoView({behavior:'smooth', block:'center'});
+        } else {
+          // fall back to native form submit if endpoint refuses XHR
+          intake.submit();
+        }
+      } catch(err){
+        intake.submit();
+      }
+    });
+  }
+</script>
+<script src="assets/enhance.js"></script>
+</body>
+</html>

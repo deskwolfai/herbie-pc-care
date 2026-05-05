@@ -1,0 +1,28 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Vercel CLI metadata (only created if you use the vercel CLI locally)
+.vercel/
+
+# Environment files (none today, but reserved)
+.env
+.env.local
+.env.*.local
+
+# Node (only if you later add a build step — not currently used)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build artifacts (none today)
+dist/
+build/

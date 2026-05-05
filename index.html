@@ -1,0 +1,1456 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Herbie PC Care — PC Cleaning & Thermal Service · Tondo, Manila</title>
+<meta name="description" content="Specialist PC cleaning, thermal paste replacement, and fan service in Tondo, Manila. Drop-off, pick-up, or on-site. Call 0920-857-0392." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,30..100&family=JetBrains+Mono:wght@400;500;700&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1014;
+  --ink-2:#15181E;
+  --ink-3:#1F232B;
+  --paper:#F2E9D8;
+  --paper-2:#E8DEC8;
+  --paper-3:#D8CCB2;
+  --accent:#D8FF3D;
+  --rust:#C04A1F;
+  --rust-deep:#8E2F12;
+  --steel:#6B7176;
+  --line-d:rgba(242,233,216,0.14);
+  --line-l:rgba(14,16,20,0.14);
+  --serif:"Fraunces", ui-serif, Georgia, serif;
+  --sans:"Be Vietnam Pro", system-ui, -apple-system, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--ink);color:var(--paper);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;border:0;background:0;cursor:pointer;color:inherit}
+::selection{background:var(--accent);color:var(--ink)}
+
+/* ─── reusable atoms ─── */
+.wrap{max-width:1320px;margin:0 auto;padding:0 32px}
+@media (max-width:720px){.wrap{padding:0 20px}}
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--steel)}
+.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border:1px solid var(--line-d);border-radius:999px;color:var(--paper)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.85)}}
+
+.btn{display:inline-flex;align-items:center;gap:12px;padding:14px 22px;border-radius:999px;font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn .arr{display:inline-block;transform:translateX(0);transition:transform .3s ease}
+.btn:hover .arr{transform:translateX(4px)}
+.btn-accent{background:var(--accent);color:var(--ink)!important;border:1px solid var(--accent)}
+.btn-accent:hover{background:#E8FF6A;border-color:#E8FF6A}
+.btn-ghost-d{color:var(--paper)!important;border:1px solid var(--line-d)}
+.btn-ghost-d:hover{border-color:var(--paper)}
+.btn-ink{background:var(--ink);color:var(--paper)!important;border:1px solid var(--ink)}
+.btn-ink:hover{background:#000}
+.btn-paper{background:var(--paper);color:var(--ink)!important;border:1px solid var(--paper)}
+.btn-paper:hover{background:#fff;border-color:#fff}
+
+/* ─── Top Nav ─── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);background:rgba(14,16,20,.62);border-bottom:1px solid var(--line-d)}
+.nav-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:-.01em}
+.brand .mark{width:34px;height:34px;border-radius:9px;background:var(--accent);position:relative;display:grid;place-items:center;color:var(--ink);font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.04em}
+.brand .mark::after{content:"";position:absolute;inset:3px;border:1px dashed rgba(14,16,20,.45);border-radius:6px;pointer-events:none}
+.nav-links{display:flex;gap:28px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper)}
+.nav-links a{opacity:.7;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.nav-phone{font-family:var(--mono);font-size:13px;letter-spacing:.06em;color:var(--paper);display:flex;align-items:center;gap:8px}
+.nav-phone .live{width:7px;height:7px;border-radius:50%;background:#3DDC84;box-shadow:0 0 10px #3DDC84;animation:pulse 1.4s infinite}
+@media (max-width:900px){.nav-links{display:none}.nav-phone span:first-child{display:none}}
+
+/* ─── Hero ─── */
+.hero{position:relative;padding:148px 0 90px;overflow:hidden;background:var(--ink)}
+.hero-bg{position:absolute;inset:-4%;z-index:0;background:url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2400&q=85') center/cover no-repeat;animation:kenBurns 26s ease-in-out infinite alternate;will-change:transform;filter:brightness(.55) saturate(.95) contrast(1.05)}
+.hero-bg::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(14,16,20,.55) 0%, rgba(14,16,20,.78) 55%, rgba(14,16,20,.96) 100%),radial-gradient(1200px 600px at 75% 20%, rgba(216,255,61,.12), transparent 60%),radial-gradient(800px 400px at 10% 80%, rgba(192,74,31,.20), transparent 60%)}
+@keyframes kenBurns{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.10) translate(-1%,1%)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background-image:linear-gradient(var(--line-d) 1px, transparent 1px),linear-gradient(90deg, var(--line-d) 1px, transparent 1px);background-size:88px 88px;mask-image:radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 75%);opacity:.45;pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 50% 50%, transparent 30%, rgba(14,16,20,.55) 80%, var(--ink) 100%);z-index:1}
+.hero-grid{display:grid;grid-template-columns: 1.25fr .9fr;gap:64px;align-items:end;position:relative;z-index:2}
+@media (max-width:980px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px;animation:fadeUp .8s ease both}
+.hero h1{font-family:var(--serif);font-variation-settings:"opsz" 144,"SOFT" 30;font-weight:380;font-size:clamp(48px, 8.4vw, 132px);line-height:.92;letter-spacing:-.035em;color:var(--paper);max-width:14ch;animation:fadeUp .9s .12s ease both}
+.hero h1 em{font-style:italic;font-variation-settings:"opsz" 144,"SOFT" 100;font-weight:340;color:var(--accent)}
+.hero h1 .strike{position:relative;display:inline-block;color:var(--steel)}
+.hero h1 .strike::after{content:"";position:absolute;left:-2%;right:-2%;top:52%;height:3px;background:var(--rust);transform:rotate(-3deg)}
+.hero-sub{margin-top:30px;max-width:46ch;color:var(--paper);opacity:.78;font-size:17px;line-height:1.55;animation:fadeUp 1s .24s ease both}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;animation:fadeUp 1s .36s ease both}
+.hero-foot{margin-top:46px;display:flex;flex-wrap:wrap;gap:36px;animation:fadeUp 1s .48s ease both}
+.hero-foot .stat .n{font-family:var(--serif);font-weight:400;font-size:34px;letter-spacing:-.02em;color:var(--paper)}
+.hero-foot .stat .l{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-top:4px}
+
+/* diagnostic panel */
+.diag{background:linear-gradient(180deg, var(--ink-2), #10131A);border:1px solid var(--line-d);border-radius:18px;padding:22px;font-family:var(--mono);position:relative;overflow:hidden;animation:fadeUp 1s .2s ease both;box-shadow:0 30px 60px -30px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.04)}
+.diag::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg, rgba(216,255,61,.04) 0 1px, transparent 1px 3px);pointer-events:none;mix-blend-mode:overlay}
+.diag-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px dashed var(--line-d);padding-bottom:12px;margin-bottom:14px}
+.diag-head .lbl{font-size:11px;letter-spacing:.18em;color:var(--steel);text-transform:uppercase}
+.diag-head .id{font-size:11px;letter-spacing:.1em;color:var(--accent)}
+.diag-toggle{display:flex;background:var(--ink-3);border:1px solid var(--line-d);border-radius:8px;padding:3px;margin-bottom:14px}
+.diag-toggle button{flex:1;padding:8px 10px;border-radius:6px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);transition:.2s}
+.diag-toggle button.is-on{background:var(--paper);color:var(--ink)}
+.diag-rows{display:flex;flex-direction:column;gap:10px}
+.diag-row{display:grid;grid-template-columns: 1fr 110px 80px;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--line-d);border-radius:10px;background:rgba(255,255,255,.015)}
+.diag-row .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+.diag-row .v{font-size:18px;font-weight:500;color:var(--paper);text-align:right;font-variant-numeric:tabular-nums}
+.diag-row .v.good{color:var(--accent)}
+.diag-row .v.bad{color:#FF6B47}
+.diag-row .bar{height:6px;border-radius:4px;background:var(--ink-3);overflow:hidden;position:relative}
+.diag-row .bar i{display:block;height:100%;background:linear-gradient(90deg, var(--accent), #9DFF3D);border-radius:4px;transition:width .8s ease}
+.diag-row .bar.bad i{background:linear-gradient(90deg, var(--rust), #FF7A3D)}
+.diag-foot{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:12px;border-top:1px dashed var(--line-d);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
+.diag-foot .ok{color:var(--accent)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px) blur(6px)}to{opacity:1;transform:translateY(0) blur(0)}}
+
+/* dust particles */
+.dust{position:absolute;inset:0;pointer-events:none;z-index:1}
+.dust span{position:absolute;width:2px;height:2px;background:var(--paper);border-radius:50%;opacity:.0;animation:rise linear infinite}
+@keyframes rise{0%{transform:translateY(0) translateX(0);opacity:0}10%{opacity:.55}90%{opacity:.4}100%{transform:translateY(-110vh) translateX(40px);opacity:0}}
+
+/* ─── Ticker ─── */
+.ticker{background:var(--paper);color:var(--ink);overflow:hidden;border-top:1px solid rgba(0,0,0,.08);border-bottom:1px solid rgba(0,0,0,.08)}
+.ticker-track{display:flex;gap:56px;padding:18px 0;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;animation:slide 38s linear infinite}
+.ticker-track span{display:inline-flex;align-items:center;gap:14px}
+.ticker-track i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--rust);transform:rotate(45deg)}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ─── Light section base ─── */
+.light{background:var(--paper);color:var(--ink);position:relative}
+.light h2{font-family:var(--serif);font-variation-settings:"opsz" 144,"SOFT" 50;font-weight:400;font-size:clamp(36px,5.4vw,72px);letter-spacing:-.02em;line-height:1;color:var(--ink)}
+.light h2 em{font-style:italic;color:var(--rust);font-weight:380}
+.light h3{font-family:var(--serif);font-weight:500;font-size:24px;letter-spacing:-.01em;line-height:1.2}
+.light .eyebrow{color:var(--rust)}
+.light p{color:#3A3D43;line-height:1.6}
+
+/* ─── Services ─── */
+.services{padding:120px 0 30px}
+.svc-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:64px}
+@media (max-width:820px){.svc-head{grid-template-columns:1fr;gap:24px}}
+.svc-head .right{max-width:46ch}
+.svc-head .right p{font-size:17px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line-l)}
+@media (max-width:980px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.svc-grid{grid-template-columns:1fr}}
+.svc{padding:32px 28px 36px;border-bottom:1px solid var(--line-l);border-right:1px solid var(--line-l);position:relative;transition:background .25s ease}
+.svc:nth-child(3n){border-right:0}
+@media (max-width:980px){.svc{border-right:1px solid var(--line-l)} .svc:nth-child(3n){border-right:1px solid var(--line-l)} .svc:nth-child(2n){border-right:0}}
+@media (max-width:620px){.svc, .svc:nth-child(3n){border-right:0}}
+.svc:hover{background:var(--paper-2)}
+.svc .num{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--rust);margin-bottom:30px;display:flex;justify-content:space-between;align-items:center}
+.svc .num .badge{font-size:10px;padding:3px 8px;border:1px solid var(--line-l);border-radius:999px;color:#3A3D43;text-transform:uppercase}
+.svc h3{margin-bottom:14px;max-width:14ch}
+.svc p{font-size:14.5px;color:#3A3D43;max-width:34ch}
+.svc .meta{margin-top:24px;display:flex;gap:14px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);align-items:center;padding-top:18px;border-top:1px dashed var(--line-l)}
+.svc .meta .price{color:var(--ink);font-weight:600}
+
+/* ─── Process ─── */
+.process{padding:130px 0;background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+.process::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 400px at 80% 30%, rgba(216,255,61,.06), transparent 60%);pointer-events:none}
+.proc-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:80px;gap:32px;flex-wrap:wrap}
+.proc-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(36px,5.4vw,72px);letter-spacing:-.02em;line-height:1;max-width:18ch}
+.proc-head h2 em{font-style:italic;color:var(--accent);font-weight:380}
+.proc-head .meta{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);max-width:30ch}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line-d)}
+@media (max-width:980px){.proc-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:540px){.proc-grid{grid-template-columns:1fr}}
+.step{padding:36px 28px;border-right:1px solid var(--line-d);border-bottom:1px solid var(--line-d);position:relative}
+.step:nth-child(4n){border-right:0}
+@media (max-width:980px){.step:nth-child(4n){border-right:1px solid var(--line-d)}.step:nth-child(2n){border-right:0}}
+@media (max-width:540px){.step, .step:nth-child(2n){border-right:0}}
+.step .num{font-family:var(--serif);font-style:italic;font-weight:300;font-size:64px;color:var(--accent);line-height:.8;margin-bottom:22px;letter-spacing:-.02em}
+.step h4{font-family:var(--serif);font-weight:500;font-size:22px;letter-spacing:-.01em;margin-bottom:10px}
+.step p{font-size:14.5px;color:#A8ADB5;line-height:1.6;max-width:30ch}
+.step .time{margin-top:22px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+
+/* ─── Pricing ─── */
+.pricing{padding:130px 0}
+.price-head{margin-bottom:60px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end}
+@media (max-width:820px){.price-head{grid-template-columns:1fr}}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:900px){.price-grid{grid-template-columns:1fr}}
+.tier{background:var(--paper-2);border:1px solid var(--line-l);border-radius:18px;padding:30px;display:flex;flex-direction:column;min-height:520px;position:relative;transition:transform .3s ease, box-shadow .3s ease}
+.tier:hover{transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(14,16,20,.35)}
+.tier.feat{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tier.feat h3, .tier.feat .price{color:var(--paper)}
+.tier.feat p{color:#A8ADB5}
+.tier.feat li{color:var(--paper);border-color:var(--line-d)}
+.tier.feat li::before{color:var(--accent)}
+.tier-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px}
+.tier h3{font-family:var(--serif);font-weight:500;font-size:26px;letter-spacing:-.01em}
+.tier .badge{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--rust);color:var(--paper)}
+.tier.feat .badge{background:var(--accent);color:var(--ink)}
+.tier .desc{font-size:14px;line-height:1.55;margin-bottom:18px;min-height:64px}
+.tier .price{font-family:var(--serif);font-weight:400;font-size:54px;letter-spacing:-.02em;line-height:1;display:flex;align-items:baseline;gap:6px}
+.tier .price .cur{font-family:var(--mono);font-size:13px;color:var(--rust);font-weight:500;letter-spacing:.05em}
+.tier.feat .price .cur{color:var(--accent)}
+.tier .price .from{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-left:8px}
+.tier ul{list-style:none;margin:24px 0 28px;display:flex;flex-direction:column;gap:0;border-top:1px dashed var(--line-l)}
+.tier ul li{padding:14px 0 14px 28px;border-bottom:1px dashed var(--line-l);position:relative;font-size:14px}
+.tier ul li::before{content:"+";position:absolute;left:0;top:14px;font-family:var(--mono);color:var(--rust);font-weight:700}
+.tier .btn{margin-top:auto;justify-content:center}
+
+/* ─── Coverage ─── */
+.coverage{padding:120px 0;background:var(--paper-2);position:relative;overflow:hidden}
+.cov-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+@media (max-width:980px){.cov-grid{grid-template-columns:1fr}}
+.cov-info h2{margin-bottom:24px}
+.cov-info p{font-size:17px;max-width:46ch;margin-bottom:30px}
+.cov-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line-l);margin-bottom:34px;font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.cov-list li{padding:14px 0;border-bottom:1px solid var(--line-l);display:flex;align-items:center;gap:10px}
+.cov-list li::before{content:"●";color:var(--rust);font-size:9px}
+.cov-map{aspect-ratio:1/1;background:var(--paper);border:1px solid var(--line-l);border-radius:24px;position:relative;overflow:hidden;box-shadow:0 30px 60px -36px rgba(14,16,20,.3)}
+.cov-map iframe{filter:grayscale(.15) contrast(.96) sepia(.08)}
+.map-card{position:absolute;left:18px;bottom:18px;background:var(--paper);border:1px solid var(--line-l);border-radius:12px;padding:14px 16px;max-width:240px;box-shadow:0 12px 30px -14px rgba(14,16,20,.35);backdrop-filter:blur(6px)}
+.map-card-eye{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--rust);text-transform:uppercase;margin-bottom:6px}
+.map-card-name{font-family:var(--serif);font-weight:500;font-size:18px;letter-spacing:-.01em;color:var(--ink);line-height:1.15}
+.map-card-sub{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:#3A3D43;margin-top:4px;text-transform:uppercase}
+.map-card-link{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--rust);padding-bottom:2px;transition:color .2s, border-color .2s}
+.map-card-link:hover{color:var(--rust)}
+
+/* ─── Voice (testimonial) ─── */
+.voice{padding:130px 0;background:var(--paper);position:relative}
+.voice-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:start}
+@media (max-width:900px){.voice-grid{grid-template-columns:1fr;gap:32px}}
+.voice-grid .left .eyebrow{margin-bottom:18px}
+.voice-grid .left .name{font-family:var(--serif);font-weight:500;font-size:28px;letter-spacing:-.01em;margin-bottom:6px}
+.voice-grid .left .role{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:30px}
+.voice-grid .left .meta-list{list-style:none;border-top:1px solid var(--line-l)}
+.voice-grid .left .meta-list li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line-l);font-family:var(--mono);font-size:12px;letter-spacing:.06em}
+.voice-grid .left .meta-list li span:first-child{color:var(--steel);text-transform:uppercase;letter-spacing:.12em}
+.voice-grid .left .meta-list li span:last-child{color:var(--ink);font-weight:500}
+.quote{font-family:var(--serif);font-weight:380;font-style:italic;font-size:clamp(28px,3.4vw,44px);letter-spacing:-.015em;line-height:1.18;color:var(--ink);position:relative;padding-left:38px}
+.quote::before{content:"“";position:absolute;left:-2px;top:-26px;font-size:120px;font-style:italic;color:var(--rust);font-family:var(--serif);line-height:1;opacity:.85}
+.proof-row{margin-top:50px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line-l)}
+@media (max-width:620px){.proof-row{grid-template-columns:1fr}}
+.proof-row .cell{padding:22px 22px 22px 0;border-bottom:1px solid var(--line-l);border-right:1px solid var(--line-l)}
+.proof-row .cell:last-child{border-right:0}
+@media (max-width:620px){.proof-row .cell{border-right:0;padding-right:0}}
+.proof-row .n{font-family:var(--serif);font-weight:400;font-size:42px;letter-spacing:-.02em;line-height:1;color:var(--ink)}
+.proof-row .l{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);margin-top:8px}
+
+/* ─── Big CTA ─── */
+.cta{background:var(--ink);color:var(--paper);padding:120px 0 110px;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:0;background:radial-gradient(800px 500px at 80% 50%, rgba(216,255,61,.07), transparent 60%), radial-gradient(600px 400px at 10% 30%, rgba(192,74,31,.10), transparent 60%);pointer-events:none}
+.cta-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:60px;align-items:end;position:relative}
+@media (max-width:900px){.cta-grid{grid-template-columns:1fr}}
+.cta h2{font-family:var(--serif);font-weight:400;font-size:clamp(44px,7vw,108px);line-height:.92;letter-spacing:-.03em;max-width:14ch}
+.cta h2 em{font-style:italic;font-weight:340;color:var(--accent)}
+.cta-sub{margin-top:24px;font-size:17px;max-width:42ch;color:#A8ADB5;line-height:1.55}
+.cta .phonecard{background:var(--ink-2);border:1px solid var(--line-d);border-radius:20px;padding:28px;font-family:var(--mono);position:relative;overflow:hidden}
+.cta .phonecard::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg, var(--accent), transparent);}
+.phonecard .lbl{font-size:11px;letter-spacing:.18em;color:var(--steel);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.phonecard .lbl .live{width:7px;height:7px;border-radius:50%;background:#3DDC84;box-shadow:0 0 10px #3DDC84;animation:pulse 1.4s infinite}
+.phonecard .num{font-family:var(--serif);font-weight:380;font-size:44px;letter-spacing:-.02em;color:var(--paper);line-height:1;margin-bottom:22px;display:block}
+.phonecard .row{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:10px 0;border-top:1px dashed var(--line-d)}
+.phonecard .row span:first-child{color:var(--steel)}
+.phonecard .row span:last-child{color:var(--paper)}
+.phonecard .btn{margin-top:18px;width:100%;justify-content:center}
+
+/* ─── Footer ─── */
+footer{background:#0A0C10;color:var(--paper);padding:70px 0 28px;border-top:1px solid var(--line-d)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;margin-bottom:60px}
+@media (max-width:820px){.foot-grid{grid-template-columns:1fr 1fr;gap:32px}}
+@media (max-width:520px){.foot-grid{grid-template-columns:1fr}}
+.foot h5{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);margin-bottom:18px}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--paper)}
+.foot ul a{opacity:.75;transition:opacity .2s}
+.foot ul a:hover{opacity:1;color:var(--accent)}
+.foot .brand{margin-bottom:16px}
+.foot p{font-size:14px;line-height:1.6;color:#A8ADB5;max-width:34ch}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--line-d);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);flex-wrap:wrap;gap:16px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(28px) blur(4px);transition:opacity .9s ease, transform .9s ease, filter .9s ease}
+.reveal.in{opacity:1;transform:none;filter:none}
+
+/* ─── Stagger reveals (sequenced grids) ─── */
+.svc-grid .reveal:nth-child(1){transition-delay:0s}
+.svc-grid .reveal:nth-child(2){transition-delay:.07s}
+.svc-grid .reveal:nth-child(3){transition-delay:.14s}
+.svc-grid .reveal:nth-child(4){transition-delay:.21s}
+.svc-grid .reveal:nth-child(5){transition-delay:.28s}
+.svc-grid .reveal:nth-child(6){transition-delay:.35s}
+.proc-grid .reveal:nth-child(1){transition-delay:0s}
+.proc-grid .reveal:nth-child(2){transition-delay:.10s}
+.proc-grid .reveal:nth-child(3){transition-delay:.20s}
+.proc-grid .reveal:nth-child(4){transition-delay:.30s}
+.price-grid .reveal:nth-child(1){transition-delay:0s}
+.price-grid .reveal:nth-child(2){transition-delay:.10s}
+.price-grid .reveal:nth-child(3){transition-delay:.20s}
+
+/* ─── Scroll progress bar ─── */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg, var(--accent), #9DFF3D);z-index:100;box-shadow:0 0 12px rgba(216,255,61,.6);transition:width .12s linear;pointer-events:none}
+
+/* ─── Diagnostic tilt ─── */
+.diag{transform-style:preserve-3d;transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+.diag > *{transform:translateZ(20px)}
+
+/* ─── Workshop Reel ─── */
+.workshop{padding:130px 0;background:var(--ink-2);color:var(--paper);position:relative;overflow:hidden}
+.workshop::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 500px at 15% 25%, rgba(192,74,31,.10), transparent 60%),radial-gradient(700px 400px at 85% 75%, rgba(216,255,61,.05), transparent 60%);pointer-events:none}
+.work-head{display:flex;align-items:end;justify-content:space-between;gap:32px;margin-bottom:64px;flex-wrap:wrap;position:relative;z-index:1}
+.work-head .left{max-width:18ch}
+.work-head .eyebrow{margin-bottom:18px}
+.work-head h2{font-family:var(--serif);font-variation-settings:"opsz" 144,"SOFT" 50;font-weight:400;font-size:clamp(36px,5.4vw,72px);letter-spacing:-.02em;line-height:1;color:var(--paper)}
+.work-head h2 em{font-style:italic;color:var(--accent);font-weight:380}
+.work-head .right{max-width:36ch;font-family:var(--mono);font-size:12px;letter-spacing:.10em;text-transform:uppercase;color:var(--steel);line-height:1.7}
+.work-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:120px;gap:14px;position:relative;z-index:1}
+@media (max-width:980px){.work-grid{grid-template-columns:repeat(6,1fr);grid-auto-rows:96px}}
+@media (max-width:620px){.work-grid{grid-template-columns:repeat(4,1fr);grid-auto-rows:80px;gap:10px}}
+.frame{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line-d);background:var(--ink-3);transform:scale(.96);opacity:0;transition:transform 1s cubic-bezier(.2,.7,.2,1), opacity 1s ease, border-color .3s}
+.frame.in{transform:scale(1);opacity:1}
+.frame:hover{border-color:var(--accent)}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.6s cubic-bezier(.2,.7,.2,1), filter .6s;filter:saturate(.92) contrast(1.04)}
+.frame:hover img{transform:scale(1.07);filter:saturate(1.05) contrast(1.08)}
+.frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%, rgba(14,16,20,.78));pointer-events:none}
+.frame .cap{position:absolute;left:14px;bottom:12px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--paper);text-transform:uppercase;z-index:2;display:flex;align-items:center;gap:8px}
+.frame .cap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.frame .num{position:absolute;right:12px;top:12px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--paper);text-transform:uppercase;background:rgba(14,16,20,.55);backdrop-filter:blur(4px);padding:5px 9px;border-radius:999px;border:1px solid var(--line-d);z-index:2}
+.frame.f1{grid-column:span 5;grid-row:span 3}
+.frame.f2{grid-column:span 4;grid-row:span 2}
+.frame.f3{grid-column:span 3;grid-row:span 2}
+.frame.f4{grid-column:span 4;grid-row:span 3}
+.frame.f5{grid-column:span 3;grid-row:span 3}
+.frame.f6{grid-column:span 5;grid-row:span 2}
+@media (max-width:980px){
+  .frame.f1{grid-column:span 6;grid-row:span 3}
+  .frame.f2{grid-column:span 3;grid-row:span 2}
+  .frame.f3{grid-column:span 3;grid-row:span 2}
+  .frame.f4{grid-column:span 3;grid-row:span 3}
+  .frame.f5{grid-column:span 3;grid-row:span 3}
+  .frame.f6{grid-column:span 6;grid-row:span 2}
+}
+@media (max-width:620px){
+  .frame.f1, .frame.f6{grid-column:span 4;grid-row:span 3}
+  .frame.f2, .frame.f3, .frame.f4, .frame.f5{grid-column:span 4;grid-row:span 2}
+}
+.work-strip{margin-top:60px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line-d);position:relative;z-index:1}
+@media (max-width:780px){.work-strip{grid-template-columns:repeat(2,1fr)}}
+.work-strip .cell{padding:26px 24px 28px 0;border-bottom:1px solid var(--line-d);border-right:1px solid var(--line-d)}
+.work-strip .cell:last-child{border-right:0}
+@media (max-width:780px){.work-strip .cell:nth-child(2n){border-right:0}}
+.work-strip .n{font-family:var(--serif);font-weight:400;font-size:42px;letter-spacing:-.02em;line-height:1;color:var(--paper)}
+.work-strip .n .plus{color:var(--accent)}
+.work-strip .l{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-top:10px}
+
+/* ─── Process bg ─── */
+.process{background:var(--ink) url('https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat}
+.process::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(14,16,20,.94) 0%, rgba(14,16,20,.97) 100%),radial-gradient(700px 400px at 80% 30%, rgba(216,255,61,.08), transparent 60%);pointer-events:none;z-index:0}
+.process .wrap{position:relative;z-index:1}
+.process .proc-head h2{color:var(--paper)}
+.process .proc-head h2 em{color:var(--accent)}
+.process .step h4{color:var(--paper)}
+
+/* ─── Voice photo ─── */
+.voice-grid{grid-template-columns:.95fr 1.4fr}
+@media (max-width:900px){.voice-grid{grid-template-columns:1fr}}
+.voice-photo{aspect-ratio:4/5;background:var(--paper-2) url('https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=1200&q=85') center/cover no-repeat;border-radius:18px;border:1px solid var(--line-l);position:relative;overflow:hidden;box-shadow:0 30px 60px -28px rgba(14,16,20,.45);margin-bottom:30px}
+.voice-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, transparent 45%, rgba(14,16,20,.55))}
+.voice-photo .stamp{position:absolute;left:14px;top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--paper);text-transform:uppercase;background:rgba(14,16,20,.7);padding:7px 11px;border-radius:999px;backdrop-filter:blur(6px);z-index:2;display:flex;align-items:center;gap:8px}
+.voice-photo .stamp::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.voice-photo .corner{position:absolute;right:14px;bottom:14px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--paper);text-transform:uppercase;z-index:2}
+
+/* ─── CTA bg image ─── */
+.cta{background:var(--ink) url('https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat}
+.cta::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(14,16,20,.78), rgba(14,16,20,.92)),radial-gradient(800px 500px at 80% 50%, rgba(216,255,61,.10), transparent 60%),radial-gradient(600px 400px at 10% 30%, rgba(192,74,31,.16), transparent 60%);pointer-events:none}
+
+/* ─── Counters keep tabular ─── */
+.count{font-variant-numeric:tabular-nums}
+
+/* ─── Subtle hero parallax handled by JS via --py CSS var ─── */
+.hero-bg{transform:translate3d(0, var(--py, 0px), 0) scale(var(--ks, 1))}
+
+@media (prefers-reduced-motion: reduce){
+  .hero-bg{animation:none}
+  .reveal, .frame, .stagger > *{transition:none}
+}
+
+/* ─── Real-work gallery (Bench Log wall) ─── */
+.bench-log{padding:130px 0;background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+.bench-log::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 500px at 80% 20%, rgba(216,255,61,.07), transparent 60%),radial-gradient(700px 400px at 10% 80%, rgba(192,74,31,.10), transparent 60%);pointer-events:none}
+.bench-log .wrap{position:relative;z-index:1}
+.bench-log-head{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:end;margin-bottom:60px}
+@media (max-width:900px){.bench-log-head{grid-template-columns:1fr;gap:24px}}
+.bench-log-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(36px,5.4vw,72px);letter-spacing:-.02em;line-height:1;color:var(--paper)}
+.bench-log-head h2 em{font-style:italic;color:var(--accent);font-weight:380}
+.bench-log-meta{font-family:var(--mono);font-size:12px;letter-spacing:.10em;text-transform:uppercase;color:var(--steel);line-height:1.7;max-width:38ch}
+.bench-log-strip{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
+.bench-log-strip li{list-style:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);padding:6px 11px;border:1px solid var(--line-d);border-radius:999px;background:rgba(255,255,255,.025);display:inline-flex;align-items:center;gap:7px}
+.bench-log-strip li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
+
+.gallery{position:relative;width:100%}
+.g-stage{position:relative}
+.g-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding:4px 2px 10px;cursor:grab}
+.g-track:active{cursor:grabbing}
+.g-track::-webkit-scrollbar{display:none}
+.g-tile{flex:0 0 320px;aspect-ratio:4/5;scroll-snap-align:start;border-radius:14px;overflow:hidden;border:1px solid var(--line-d);position:relative;display:block;background:var(--ink-3);transition:transform .35s cubic-bezier(.2,.7,.2,1), border-color .3s, box-shadow .35s;text-decoration:none;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer}
+.g-tile:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 18px 40px -22px rgba(0,0,0,.6)}
+.g-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.95) contrast(1.04);transition:transform 1.4s cubic-bezier(.2,.7,.2,1), filter .4s;pointer-events:none}
+.g-tile:hover img{transform:scale(1.05);filter:saturate(1.05) contrast(1.08)}
+.g-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, transparent 45%, rgba(14,16,20,.85));pointer-events:none}
+.g-tile .cap{position:absolute;left:14px;bottom:14px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--paper);text-transform:uppercase;z-index:2;display:inline-flex;align-items:center;gap:8px;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.g-tile .cap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.g-tile .badge{position:absolute;right:12px;top:12px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--paper);text-transform:uppercase;background:rgba(14,16,20,.62);backdrop-filter:blur(6px);padding:5px 10px;border-radius:999px;border:1px solid var(--line-d);z-index:2}
+@media (max-width:980px){.g-tile{flex:0 0 280px}}
+@media (max-width:680px){.g-tile{flex:0 0 240px}}
+@media (max-width:480px){.g-tile{flex:0 0 78vw}}
+
+.g-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:6;width:50px;height:50px;border-radius:50%;background:rgba(14,16,20,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line-d);color:var(--paper);font-family:var(--mono);font-size:20px;display:flex;align-items:center;justify-content:center;transition:background .25s, border-color .25s, transform .25s, color .25s, opacity .25s;cursor:pointer}
+.g-nav:hover{background:var(--accent);color:var(--ink);border-color:var(--accent);transform:translateY(-50%) scale(1.08)}
+.g-nav:disabled{opacity:.3;cursor:not-allowed}
+.g-nav:disabled:hover{background:rgba(14,16,20,.72);color:var(--paper);border-color:var(--line-d);transform:translateY(-50%)}
+.g-nav.prev{left:-14px}
+.g-nav.next{right:-14px}
+@media (max-width:1100px){.g-nav.prev{left:6px}.g-nav.next{right:6px}}
+@media (max-width:680px){.g-nav{width:42px;height:42px;font-size:17px}}
+
+.g-thumbs{margin-top:20px;display:flex;gap:6px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--line-d) transparent;padding:6px 2px}
+.g-thumbs::-webkit-scrollbar{height:6px}
+.g-thumbs::-webkit-scrollbar-track{background:transparent}
+.g-thumbs::-webkit-scrollbar-thumb{background:var(--line-d);border-radius:999px}
+.g-thumbs::-webkit-scrollbar-thumb:hover{background:var(--steel)}
+.g-thumb{flex:0 0 88px;height:60px;border-radius:6px;overflow:hidden;border:1px solid var(--line-d);background:var(--ink-3);cursor:pointer;padding:0;position:relative;opacity:.55;transition:opacity .25s, border-color .25s, transform .25s, box-shadow .25s}
+.g-thumb:hover{opacity:1;border-color:var(--steel)}
+.g-thumb.is-on{opacity:1;border-color:var(--accent);transform:translateY(-2px);box-shadow:0 0 0 2px rgba(216,255,61,.20), 0 8px 18px -10px rgba(0,0,0,.6)}
+.g-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+@media (max-width:680px){.g-thumb{flex:0 0 68px;height:46px}}
+
+/* ─── Lightbox (fullscreen photo viewer) ─── */
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(8,9,12,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;pointer-events:none;transition:opacity .25s;display:grid;place-items:center}
+.lightbox.is-on{opacity:1;pointer-events:auto}
+.lb-frame{max-width:92vw;max-height:88vh;display:flex;flex-direction:column;align-items:center;gap:18px}
+.lb-frame img{max-width:92vw;max-height:78vh;object-fit:contain;border-radius:10px;box-shadow:0 30px 80px -20px rgba(0,0,0,.6);background:var(--ink-3)}
+.lb-caption{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);flex-wrap:wrap;justify-content:center}
+.lb-ticket{padding:6px 11px;border:1px solid var(--line-d);border-radius:999px;background:rgba(255,255,255,.04);display:inline-flex;align-items:center;gap:8px}
+.lb-ticket::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.lb-label{color:var(--accent)}
+.lb-counter{color:var(--steel)}
+.lb-close,.lb-nav{position:absolute;background:rgba(14,16,20,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line-d);color:var(--paper);border-radius:50%;display:grid;place-items:center;cursor:pointer;transition:background .25s,border-color .25s,transform .25s,color .25s;font-family:var(--mono)}
+.lb-close:hover,.lb-nav:hover{background:var(--accent);color:var(--ink);border-color:var(--accent)}
+.lb-close{top:18px;right:18px;width:46px;height:46px;font-size:24px;font-weight:300;line-height:1}
+.lb-close:hover{transform:scale(1.08)}
+.lb-nav{top:50%;transform:translateY(-50%);width:54px;height:54px;font-size:22px}
+.lb-nav.prev{left:18px}.lb-nav.next{right:18px}
+.lb-nav:hover{transform:translateY(-50%) scale(1.08)}
+@media (max-width:680px){.lb-nav{width:44px;height:44px;font-size:18px}.lb-close{width:40px;height:40px;font-size:20px;top:12px;right:12px}.lb-nav.prev{left:8px}.lb-nav.next{right:8px}}
+body.lb-open{overflow:hidden}
+
+/* ─── FAB stack ─── */
+.fab-stack{position:fixed;right:20px;bottom:20px;z-index:80;display:flex;flex-direction:column;gap:10px;transition:opacity .35s ease}
+.fab-stack.is-dim{opacity:.4}
+.fab-stack.is-dim:hover{opacity:1}
+.fab{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.18);box-shadow:0 14px 30px -10px rgba(0,0,0,.5);background:var(--ink);color:#fff;text-decoration:none;opacity:0;transform:translateY(14px) scale(.9)}
+.fab.is-in{opacity:1;transform:none;transition:transform .55s cubic-bezier(.2,.7,.2,1), opacity .55s ease, box-shadow .25s, scale .25s}
+.fab:hover{transform:translateY(-3px) scale(1.06);box-shadow:0 20px 40px -10px rgba(0,0,0,.6)}
+.fab svg{width:24px;height:24px;display:block}
+.fab-wa{background:#25D366;color:#fff;border-color:#1ebc59}
+.fab-viber{background:#7360F2;color:#fff;border-color:#6353d6}
+.fab-call{background:var(--accent);color:var(--ink);border-color:#c4ec00}
+@media (max-width:680px){.fab-stack{right:14px;bottom:14px}.fab{width:48px;height:48px}.fab svg{width:22px;height:22px}}
+@media print{.fab-stack,.lightbox{display:none}}
+
+/* ─── FAQ section ─── */
+.faq{padding:120px 0;background:var(--paper);color:var(--ink);position:relative}
+.faq-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+@media (max-width:900px){.faq-grid{grid-template-columns:1fr;gap:32px}}
+.faq h2{font-family:var(--serif);font-variation-settings:"opsz" 144,"SOFT" 50;font-weight:400;font-size:clamp(36px,5.4vw,72px);letter-spacing:-.02em;line-height:1;color:var(--ink)}
+.faq h2 em{font-style:italic;color:var(--rust);font-weight:380}
+.faq .lede{margin-top:22px;font-size:17px;color:#3A3D43;line-height:1.6;max-width:42ch}
+.faq .helper{margin-top:24px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+.faq-list{display:flex;flex-direction:column;border-top:1px solid var(--line-l)}
+.faq-list details{border-bottom:1px solid var(--line-l);padding:22px 4px;transition:background .2s ease}
+.faq-list details[open]{background:var(--paper-2)}
+.faq-list summary{display:flex;justify-content:space-between;align-items:center;gap:18px;cursor:pointer;font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:-.01em;color:var(--ink);list-style:none;padding:0 12px;line-height:1.3}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:"+";font-family:var(--mono);font-size:24px;color:var(--rust);transition:transform .25s, content .2s;font-weight:300;flex-shrink:0;line-height:1}
+.faq-list details[open] summary::after{content:"−"}
+.faq-list .ans{padding:14px 12px 4px;color:#3A3D43;line-height:1.7;font-size:15.5px;max-width:62ch}
+
+.bench-log-foot{margin-top:60px;display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;border-top:1px solid var(--line-d);padding-top:32px}
+.bench-log-foot .row{display:grid;grid-template-columns:repeat(3,auto);gap:48px}
+@media (max-width:680px){.bench-log-foot .row{grid-template-columns:1fr 1fr;gap:24px}}
+.bench-log-foot .n{font-family:var(--serif);font-weight:400;font-size:34px;letter-spacing:-.02em;line-height:1;color:var(--paper)}
+.bench-log-foot .n .ok{color:var(--accent)}
+.bench-log-foot .l{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-top:10px}
+
+</style>
+</head>
+<body>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollBar" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav-row">
+    <a class="brand" href="#top">
+      <span class="mark">H<span style="font-size:7px;align-self:flex-start;margin-top:2px">PC</span></span>
+      <span>Herbie<span style="opacity:.55"> · </span>PC Care</span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="herbie-pc-care/about.html">About</a>
+      <a href="herbie-pc-care/blog.html">Blog</a>
+      <a href="herbie-pc-care/contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <span class="nav-phone"><span class="live"></span><span>Open · </span><a href="tel:09208570392">0920-857-0392</a></span>
+      <a class="btn btn-accent" href="tel:09208570392"><span>Book Clean</span><span class="arr">→</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="dust" id="dust"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-meta">
+        <span class="tag"><span class="dot"></span>Now Booking · Tondo, Manila</span>
+        <span class="tag" style="color:var(--steel)">EST. 2024 · 1-DAY TURNAROUND</span>
+        <span class="tag">Home Service · Minimal Transport Fee</span>
+      </div>
+      <h1>
+        Your PC <span class="strike">choking</span><br>
+        on <em>dust.</em><br>
+        We make it <em>breathe.</em>
+      </h1>
+      <p class="hero-sub">
+        Specialist deep-clean, thermal repaste, and fan service for desktops &amp; laptops. We bring shop-grade tools to your unit — drop-off, pick-up, or on-site within Metro Manila.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-accent" href="tel:09208570392"><span>Call 0920-857-0392</span><span class="arr">→</span></a>
+        <a class="btn btn-ghost-d" href="#services"><span>See Services</span><span class="arr">↓</span></a>
+      </div>
+      <div class="hero-foot">
+        <div class="stat"><div class="n">1<span style="opacity:.4">×</span> 24h</div><div class="l">Standard Turnaround</div></div>
+        <div class="stat"><div class="n">−45°<span style="font-size:18px;opacity:.5">C</span></div><div class="l">Avg. Temp Drop</div></div>
+        <div class="stat"><div class="n">₱500<span style="font-size:18px;opacity:.5">+</span></div><div class="l">Starting Service</div></div>
+      </div>
+    </div>
+
+    <!-- DIAGNOSTIC PANEL -->
+    <div class="diag" aria-label="PC diagnostic readout">
+      <div class="diag-head">
+        <span class="lbl">// Diagnostic Readout</span>
+        <span class="id">UNIT-A1 · TONDO</span>
+      </div>
+      <div class="diag-toggle" role="tablist">
+        <button class="" id="btnBefore">Before</button>
+        <button class="is-on" id="btnAfter">After</button>
+      </div>
+      <div class="diag-rows" id="rows">
+        <div class="diag-row"><span class="k">CPU Temp</span><span class="bar"><i style="width:20%"></i></span><span class="v good">38°C</span></div>
+        <div class="diag-row"><span class="k">Fan RPM</span><span class="bar"><i style="width:88%"></i></span><span class="v good">4,820</span></div>
+        <div class="diag-row"><span class="k">Dust Load</span><span class="bar"><i style="width:6%"></i></span><span class="v good">4 %</span></div>
+        <div class="diag-row"><span class="k">Airflow</span><span class="bar"><i style="width:96%"></i></span><span class="v good">CLEAR</span></div>
+        <div class="diag-row"><span class="k">Thermal Paste</span><span class="bar"><i style="width:100%"></i></span><span class="v good">FRESH</span></div>
+      </div>
+      <div class="diag-foot">
+        <span>STATUS</span>
+        <span class="ok" id="status">● ALL SYSTEMS NOMINAL</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span><i></i> Desktop Deep Clean</span><span><i></i> Laptop Refresh</span><span><i></i> Thermal Repaste</span><span><i></i> Fan Replacement</span><span><i></i> Cable Management</span><span><i></i> Free Diagnostic</span><span><i></i> Same-Day Pickup</span><span><i></i> Tondo &amp; Metro Manila</span>
+    <span><i></i> Desktop Deep Clean</span><span><i></i> Laptop Refresh</span><span><i></i> Thermal Repaste</span><span><i></i> Fan Replacement</span><span><i></i> Cable Management</span><span><i></i> Free Diagnostic</span><span><i></i> Same-Day Pickup</span><span><i></i> Tondo &amp; Metro Manila</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services light" id="services">
+  <div class="wrap">
+    <div class="svc-head reveal">
+      <div>
+        <div class="eyebrow">[ 01 ] · Service Catalog</div>
+        <h2 style="margin-top:18px">A precise menu<br>for a <em>dirty job</em>.</h2>
+      </div>
+      <div class="right">
+        <p>No upsells, no mystery diagnostics. Each service is a fixed scope with a fixed range — you see the unit before, you see it after, and we walk you through every part we touch.</p>
+      </div>
+    </div>
+
+    <div class="svc-grid">
+      <article class="svc reveal">
+        <div class="num"><span>S/01</span><span class="badge">Most Booked</span></div>
+        <h3>Desktop Deep Clean</h3>
+        <p>Full disassembly, dust extraction at the case, fan, heatsink, and PSU. Brushed, blown, and reassembled with cable tidy.</p>
+        <div class="meta"><span>~ 90 min</span></div>
+      </article>
+      <article class="svc reveal">
+        <div class="num"><span>S/02</span><span class="badge">Delicate</span></div>
+        <h3>Laptop Deep Clean</h3>
+        <p>Bottom-shell teardown, fan extraction, exhaust clearing. Returned with shop-fresh thermal paste and reseated.</p>
+        <div class="meta"><span>~ 2 hrs</span></div>
+      </article>
+      <article class="svc reveal">
+        <div class="num"><span>S/03</span><span class="badge">Pro Grade</span></div>
+        <h3>Thermal Repaste</h3>
+        <p>Old paste lifted, IHS cleaned with isopropyl, new ARCTIC MX-4 or Kryonaut applied. Ships with before/after temps.</p>
+        <div class="meta"><span>~ 45 min</span></div>
+      </article>
+      <article class="svc reveal">
+        <div class="num"><span>S/04</span><span class="badge">Repair</span></div>
+        <h3>Fan Replacement</h3>
+        <p>Dead, ticking, or grinding fans replaced with sourced like-for-like. Includes lubrication option for repairable units.</p>
+        <div class="meta"><span>~ 60 min</span></div>
+      </article>
+      <article class="svc reveal">
+        <div class="num"><span>S/05</span><span class="badge">Aesthetic</span></div>
+        <h3>Cable Management</h3>
+        <p>Re-routed, zip-tied, labeled. Airflow improved by clearing front-to-back path. Looks shop-new through the side panel.</p>
+        <div class="meta"><span>~ 60 min</span></div>
+      </article>
+      <article class="svc reveal">
+        <div class="num"><span>S/06</span><span class="badge">Free</span></div>
+        <h3>Walk-in Diagnostic</h3>
+        <p>Drop your unit at the shop, get a written report on temps, fan health, dust load, and an itemized quote — no obligation.</p>
+        <div class="meta"><span>~ 20 min</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WORKSHOP REEL -->
+<section class="workshop" id="workshop">
+  <div class="wrap">
+    <div class="work-head reveal">
+      <div class="left">
+        <div class="eyebrow">[ 02 ] · Inside the Shop</div>
+        <h2 style="margin-top:18px">Real hands.<br><em>Real benches.</em></h2>
+      </div>
+      <div class="right">
+        // No stock-room marketing — every photo below is the kind of work your unit gets when it lands on our bench. Disassembled, photographed, logged, repasted, returned.
+      </div>
+    </div>
+
+    <div class="work-grid">
+      <figure class="frame f1">
+        <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=1600&q=80" alt="Motherboard close-up under workshop light" loading="lazy">
+        <span class="num">01 / Bench</span>
+        <span class="cap">Motherboard intake</span>
+      </figure>
+      <figure class="frame f2">
+        <img src="https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=1400&q=80" alt="Laptop disassembly with tools" loading="lazy">
+        <span class="num">02 / Teardown</span>
+        <span class="cap">Laptop disassembly</span>
+      </figure>
+      <figure class="frame f3">
+        <img src="https://images.unsplash.com/photo-1587202372616-b43abea06c2a?auto=format&fit=crop&w=1200&q=80" alt="Custom PC build interior" loading="lazy">
+        <span class="num">03 / Cooling</span>
+        <span class="cap">Heatsink &amp; fans</span>
+      </figure>
+      <figure class="frame f4">
+        <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?auto=format&fit=crop&w=1400&q=80" alt="Workstation with laptop and tools" loading="lazy">
+        <span class="num">04 / Repaste</span>
+        <span class="cap">Thermal compound</span>
+      </figure>
+      <figure class="frame f5">
+        <img src="https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Internal PC components closeup" loading="lazy">
+        <span class="num">05 / Detail</span>
+        <span class="cap">Component clean</span>
+      </figure>
+      <figure class="frame f6">
+        <img src="https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=1600&q=80" alt="Tidy workspace with PC peripherals" loading="lazy">
+        <span class="num">06 / Reassembly</span>
+        <span class="cap">Cable &amp; bench check</span>
+      </figure>
+    </div>
+
+    <div class="work-strip reveal">
+      <div class="cell">
+        <div class="n"><span class="count" data-count="1400">0</span><span class="plus">+</span></div>
+        <div class="l">Units cleaned to date</div>
+      </div>
+      <div class="cell">
+        <div class="n"><span class="count" data-count="45">0</span>°C</div>
+        <div class="l">Avg temp drop, before/after</div>
+      </div>
+      <div class="cell">
+        <div class="n"><span class="count" data-count="24">0</span> hrs</div>
+        <div class="l">Standard turnaround</div>
+      </div>
+      <div class="cell">
+        <div class="n"><span class="count" data-count="100">0</span>%</div>
+        <div class="l">Quote-first, fixed-fee</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REAL WORK · BENCH LOG -->
+<section class="bench-log" id="proof">
+  <div class="wrap">
+    <div class="bench-log-head reveal">
+      <div>
+        <div class="eyebrow" style="color:var(--accent)">[ Real Units · Live Bench Log ]</div>
+        <h2 style="margin-top:18px">Every machine.<br><em>Photographed.</em></h2>
+      </div>
+      <div class="bench-log-meta">
+        // No staging, no stock. The wall below is real customer units serviced at 205 San Pedro St — disassembled, cleaned, repasted, photographed, returned. Tap any tile to call us about your own.
+      </div>
+    </div>
+
+    <ul class="bench-log-strip reveal">
+      <li>Desktop deep clean</li>
+      <li>Thermal repaste</li>
+      <li>Fan replacement</li>
+      <li>Laptop teardown</li>
+      <li>Dust extraction</li>
+      <li>Cable management</li>
+      <li>GPU service</li>
+      <li>PSU clean</li>
+      <li>Heatsink clean</li>
+      <li>Bench diagnostic</li>
+      <li>Before / After</li>
+    </ul>
+
+    <div class="gallery" id="benchGallery">
+      <div class="g-stage">
+        <button class="g-nav prev" id="gPrev" type="button" aria-label="Scroll gallery left">←</button>
+        <button class="g-nav next" id="gNext" type="button" aria-label="Scroll gallery right">→</button>
+        <div class="g-track" id="gTrack" tabindex="0" aria-label="Bench log gallery — drag, swipe, or use arrows">
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/515505464_10223607857304544_4865828323739395602_n.jpg" data-ticket="#C-1801" data-label="Deep clean · Desktop" aria-label="Open photo: #C-1801 — Deep clean · Desktop"><img src="Images/515505464_10223607857304544_4865828323739395602_n.jpg" alt="Bench log #C-1801 — Desktop deep clean" loading="lazy"><span class="badge">#C-1801</span><span class="cap">Deep clean · Desktop</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/515901462_10223605960857134_635639801881889957_n.jpg" data-ticket="#C-1802" data-label="Thermal repaste" aria-label="Open photo: #C-1802 — Thermal repaste"><img src="Images/515901462_10223605960857134_635639801881889957_n.jpg" alt="Bench log #C-1802 — Thermal repaste" loading="lazy"><span class="badge">#C-1802</span><span class="cap">Thermal repaste</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/515980821_10223605961057139_884453668331777474_n.jpg" data-ticket="#C-1803" data-label="Fan replacement" aria-label="Open photo: #C-1803 — Fan replacement"><img src="Images/515980821_10223605961057139_884453668331777474_n.jpg" alt="Bench log #C-1803 — Fan replacement" loading="lazy"><span class="badge">#C-1803</span><span class="cap">Fan replacement</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516026902_10223606364227218_2574334457271678193_n.jpg" data-ticket="#C-1804" data-label="Laptop teardown" aria-label="Open photo: #C-1804 — Laptop teardown"><img src="Images/516026902_10223606364227218_2574334457271678193_n.jpg" alt="Bench log #C-1804 — Laptop teardown" loading="lazy"><span class="badge">#C-1804</span><span class="cap">Laptop teardown</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516032746_10223606363867209_8579563688137359735_n.jpg" data-ticket="#C-1805" data-label="Dust extraction" aria-label="Open photo: #C-1805 — Dust extraction"><img src="Images/516032746_10223606363867209_8579563688137359735_n.jpg" alt="Bench log #C-1805 — Dust extraction" loading="lazy"><span class="badge">#C-1805</span><span class="cap">Dust extraction</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516042867_10223605679290095_1440332946757396786_n.jpg" data-ticket="#C-1806" data-label="Cable management" aria-label="Open photo: #C-1806 — Cable management"><img src="Images/516042867_10223605679290095_1440332946757396786_n.jpg" alt="Bench log #C-1806 — Cable management" loading="lazy"><span class="badge">#C-1806</span><span class="cap">Cable management</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516090058_10223606387507800_453611117139646231_n.jpg" data-ticket="#C-1807" data-label="Bench diagnostic" aria-label="Open photo: #C-1807 — Bench diagnostic"><img src="Images/516090058_10223606387507800_453611117139646231_n.jpg" alt="Bench log #C-1807 — Bench diagnostic" loading="lazy"><span class="badge">#C-1807</span><span class="cap">Bench diagnostic</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516094936_10223606363507200_7411343976713270658_n.jpg" data-ticket="#C-1808" data-label="Heatsink clean" aria-label="Open photo: #C-1808 — Heatsink clean"><img src="Images/516094936_10223606363507200_7411343976713270658_n.jpg" alt="Bench log #C-1808 — Heatsink clean" loading="lazy"><span class="badge">#C-1808</span><span class="cap">Heatsink clean</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516262456_10223606492310420_125710593858303543_n.jpg" data-ticket="#C-1809" data-label="GPU service" aria-label="Open photo: #C-1809 — GPU service"><img src="Images/516262456_10223606492310420_125710593858303543_n.jpg" alt="Bench log #C-1809 — GPU service" loading="lazy"><span class="badge">#C-1809</span><span class="cap">GPU service</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516388053_10223606363547201_7460172596753070281_n.jpg" data-ticket="#C-1810" data-label="PSU clean" aria-label="Open photo: #C-1810 — PSU clean"><img src="Images/516388053_10223606363547201_7460172596753070281_n.jpg" alt="Bench log #C-1810 — PSU clean" loading="lazy"><span class="badge">#C-1810</span><span class="cap">PSU clean</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516409775_10223606788037813_2233451787793854066_n.jpg" data-ticket="#C-1811" data-label="CPU repaste" aria-label="Open photo: #C-1811 — CPU repaste"><img src="Images/516409775_10223606788037813_2233451787793854066_n.jpg" alt="Bench log #C-1811 — CPU repaste" loading="lazy"><span class="badge">#C-1811</span><span class="cap">CPU repaste</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516428979_10223606364307220_3239969559101628048_n.jpg" data-ticket="#C-1812" data-label="Before / After" aria-label="Open photo: #C-1812 — Before / After"><img src="Images/516428979_10223606364307220_3239969559101628048_n.jpg" alt="Bench log #C-1812 — Before / After" loading="lazy"><span class="badge">#C-1812</span><span class="cap">Before / After</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516436789_10223606492510425_1756377705164398242_n.jpg" data-ticket="#C-1813" data-label="Deep clean · Desktop" aria-label="Open photo: #C-1813 — Deep clean · Desktop"><img src="Images/516436789_10223606492510425_1756377705164398242_n.jpg" alt="Bench log #C-1813 — Desktop deep clean" loading="lazy"><span class="badge">#C-1813</span><span class="cap">Deep clean · Desktop</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516452297_10223606783877709_2887027364475515999_n.jpg" data-ticket="#C-1814" data-label="Thermal repaste" aria-label="Open photo: #C-1814 — Thermal repaste"><img src="Images/516452297_10223606783877709_2887027364475515999_n.jpg" alt="Bench log #C-1814 — Thermal repaste" loading="lazy"><span class="badge">#C-1814</span><span class="cap">Thermal repaste</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516454109_10223606785837758_1251219115602587254_n.jpg" data-ticket="#C-1815" data-label="Fan replacement" aria-label="Open photo: #C-1815 — Fan replacement"><img src="Images/516454109_10223606785837758_1251219115602587254_n.jpg" alt="Bench log #C-1815 — Fan replacement" loading="lazy"><span class="badge">#C-1815</span><span class="cap">Fan replacement</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516508730_10223606363747206_660517114451209120_n.jpg" data-ticket="#C-1816" data-label="Laptop teardown" aria-label="Open photo: #C-1816 — Laptop teardown"><img src="Images/516508730_10223606363747206_660517114451209120_n.jpg" alt="Bench log #C-1816 — Laptop teardown" loading="lazy"><span class="badge">#C-1816</span><span class="cap">Laptop teardown</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516538601_10223606784757731_2001673250992026945_n.jpg" data-ticket="#C-1817" data-label="Dust extraction" aria-label="Open photo: #C-1817 — Dust extraction"><img src="Images/516538601_10223606784757731_2001673250992026945_n.jpg" alt="Bench log #C-1817 — Dust extraction" loading="lazy"><span class="badge">#C-1817</span><span class="cap">Dust extraction</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516542679_10223606392947936_4002389780559410235_n.jpg" data-ticket="#C-1818" data-label="Cable management" aria-label="Open photo: #C-1818 — Cable management"><img src="Images/516542679_10223606392947936_4002389780559410235_n.jpg" alt="Bench log #C-1818 — Cable management" loading="lazy"><span class="badge">#C-1818</span><span class="cap">Cable management</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516544812_10223607570937385_407294530400522283_n.jpg" data-ticket="#C-1819" data-label="Bench diagnostic" aria-label="Open photo: #C-1819 — Bench diagnostic"><img src="Images/516544812_10223607570937385_407294530400522283_n.jpg" alt="Bench log #C-1819 — Bench diagnostic" loading="lazy"><span class="badge">#C-1819</span><span class="cap">Bench diagnostic</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516557932_10223606366467274_9158206809354927411_n.jpg" data-ticket="#C-1820" data-label="Heatsink clean" aria-label="Open photo: #C-1820 — Heatsink clean"><img src="Images/516557932_10223606366467274_9158206809354927411_n.jpg" alt="Bench log #C-1820 — Heatsink clean" loading="lazy"><span class="badge">#C-1820</span><span class="cap">Heatsink clean</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516609414_10223606492670429_3745384232744537233_n.jpg" data-ticket="#C-1821" data-label="GPU service" aria-label="Open photo: #C-1821 — GPU service"><img src="Images/516609414_10223606492670429_3745384232744537233_n.jpg" alt="Bench log #C-1821 — GPU service" loading="lazy"><span class="badge">#C-1821</span><span class="cap">GPU service</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516681354_10223605960737131_6188563673020474092_n.jpg" data-ticket="#C-1822" data-label="PSU clean" aria-label="Open photo: #C-1822 — PSU clean"><img src="Images/516681354_10223605960737131_6188563673020474092_n.jpg" alt="Bench log #C-1822 — PSU clean" loading="lazy"><span class="badge">#C-1822</span><span class="cap">PSU clean</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516767842_10223607570497374_5131790351654437471_n.jpg" data-ticket="#C-1823" data-label="CPU repaste" aria-label="Open photo: #C-1823 — CPU repaste"><img src="Images/516767842_10223607570497374_5131790351654437471_n.jpg" alt="Bench log #C-1823 — CPU repaste" loading="lazy"><span class="badge">#C-1823</span><span class="cap">CPU repaste</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516772772_10223606363627203_2971695753495620292_n.jpg" data-ticket="#C-1825" data-label="Deep clean · Desktop" aria-label="Open photo: #C-1825 — Deep clean · Desktop"><img src="Images/516772772_10223606363627203_2971695753495620292_n.jpg" alt="Bench log #C-1825 — Desktop deep clean" loading="lazy"><span class="badge">#C-1825</span><span class="cap">Deep clean · Desktop</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516825193_10223606366867284_645747731235128927_n.jpg" data-ticket="#C-1826" data-label="Thermal repaste" aria-label="Open photo: #C-1826 — Thermal repaste"><img src="Images/516825193_10223606366867284_645747731235128927_n.jpg" alt="Bench log #C-1826 — Thermal repaste" loading="lazy"><span class="badge">#C-1826</span><span class="cap">Thermal repaste</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/516966406_10223606387907810_5188028022147736771_n.jpg" data-ticket="#C-1827" data-label="Fan replacement" aria-label="Open photo: #C-1827 — Fan replacement"><img src="Images/516966406_10223606387907810_5188028022147736771_n.jpg" alt="Bench log #C-1827 — Fan replacement" loading="lazy"><span class="badge">#C-1827</span><span class="cap">Fan replacement</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/517025303_10223606492430423_3890086635234159930_n.jpg" data-ticket="#C-1828" data-label="Laptop teardown" aria-label="Open photo: #C-1828 — Laptop teardown"><img src="Images/517025303_10223606492430423_3890086635234159930_n.jpg" alt="Bench log #C-1828 — Laptop teardown" loading="lazy"><span class="badge">#C-1828</span><span class="cap">Laptop teardown</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/517030122_10223606366627278_1958475816770658932_n.jpg" data-ticket="#C-1829" data-label="Dust extraction" aria-label="Open photo: #C-1829 — Dust extraction"><img src="Images/517030122_10223606366627278_1958475816770658932_n.jpg" alt="Bench log #C-1829 — Dust extraction" loading="lazy"><span class="badge">#C-1829</span><span class="cap">Dust extraction</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/517036868_10223606492590427_5492548500306831463_n.jpg" data-ticket="#C-1830" data-label="Cable management" aria-label="Open photo: #C-1830 — Cable management"><img src="Images/517036868_10223606492590427_5492548500306831463_n.jpg" alt="Bench log #C-1830 — Cable management" loading="lazy"><span class="badge">#C-1830</span><span class="cap">Cable management</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/517139448_10223606362987187_6134175084521758502_n.jpg" data-ticket="#C-1831" data-label="Bench diagnostic" aria-label="Open photo: #C-1831 — Bench diagnostic"><img src="Images/517139448_10223606362987187_6134175084521758502_n.jpg" alt="Bench log #C-1831 — Bench diagnostic" loading="lazy"><span class="badge">#C-1831</span><span class="cap">Bench diagnostic</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/517165440_10223606786477774_2351981295502311270_n.jpg" data-ticket="#C-1832" data-label="Heatsink clean" aria-label="Open photo: #C-1832 — Heatsink clean"><img src="Images/517165440_10223606786477774_2351981295502311270_n.jpg" alt="Bench log #C-1832 — Heatsink clean" loading="lazy"><span class="badge">#C-1832</span><span class="cap">Heatsink clean</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/517207863_10223606787757806_6103020773420879975_n.jpg" data-ticket="#C-1833" data-label="GPU service" aria-label="Open photo: #C-1833 — GPU service"><img src="Images/517207863_10223606787757806_6103020773420879975_n.jpg" alt="Bench log #C-1833 — GPU service" loading="lazy"><span class="badge">#C-1833</span><span class="cap">GPU service</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/517419056_10223606364067214_7060466775916796111_n.jpg" data-ticket="#C-1834" data-label="PSU clean" aria-label="Open photo: #C-1834 — PSU clean"><img src="Images/517419056_10223606364067214_7060466775916796111_n.jpg" alt="Bench log #C-1834 — PSU clean" loading="lazy"><span class="badge">#C-1834</span><span class="cap">PSU clean</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/517581623_10223607571897409_1022529652429146086_n.jpg" data-ticket="#C-1835" data-label="CPU repaste" aria-label="Open photo: #C-1835 — CPU repaste"><img src="Images/517581623_10223607571897409_1022529652429146086_n.jpg" alt="Bench log #C-1835 — CPU repaste" loading="lazy"><span class="badge">#C-1835</span><span class="cap">CPU repaste</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/517711413_10223607571937410_8010293984194508911_n.jpg" data-ticket="#C-1836" data-label="Before / After" aria-label="Open photo: #C-1836 — Before / After"><img src="Images/517711413_10223607571937410_8010293984194508911_n.jpg" alt="Bench log #C-1836 — Before / After" loading="lazy"><span class="badge">#C-1836</span><span class="cap">Before / After</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/517865393_10223606362507175_1138829705625560926_n.jpg" data-ticket="#C-1837" data-label="Deep clean · Desktop" aria-label="Open photo: #C-1837 — Deep clean · Desktop"><img src="Images/517865393_10223606362507175_1138829705625560926_n.jpg" alt="Bench log #C-1837 — Desktop deep clean" loading="lazy"><span class="badge">#C-1837</span><span class="cap">Deep clean · Desktop</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/677800863_10225939721839700_4596600791880235009_n.jpg" data-ticket="#C-1838" data-label="Thermal repaste" aria-label="Open photo: #C-1838 — Thermal repaste"><img src="Images/677800863_10225939721839700_4596600791880235009_n.jpg" alt="Bench log #C-1838 — Thermal repaste" loading="lazy"><span class="badge">#C-1838</span><span class="cap">Thermal repaste</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/677803552_10225938310404415_2820705239002332155_n.jpg" data-ticket="#C-1839" data-label="Fan replacement" aria-label="Open photo: #C-1839 — Fan replacement"><img src="Images/677803552_10225938310404415_2820705239002332155_n.jpg" alt="Bench log #C-1839 — Fan replacement" loading="lazy"><span class="badge">#C-1839</span><span class="cap">Fan replacement</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/677829588_10225938310924428_1743959213959566038_n.jpg" data-ticket="#C-1840" data-label="Laptop teardown" aria-label="Open photo: #C-1840 — Laptop teardown"><img src="Images/677829588_10225938310924428_1743959213959566038_n.jpg" alt="Bench log #C-1840 — Laptop teardown" loading="lazy"><span class="badge">#C-1840</span><span class="cap">Laptop teardown</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/677862149_10225938314084507_5316932498219477238_n.jpg" data-ticket="#C-1841" data-label="Dust extraction" aria-label="Open photo: #C-1841 — Dust extraction"><img src="Images/677862149_10225938314084507_5316932498219477238_n.jpg" alt="Bench log #C-1841 — Dust extraction" loading="lazy"><span class="badge">#C-1841</span><span class="cap">Dust extraction</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/677863766_10225938315164534_8164938521083096579_n.jpg" data-ticket="#C-1842" data-label="Cable management" aria-label="Open photo: #C-1842 — Cable management"><img src="Images/677863766_10225938315164534_8164938521083096579_n.jpg" alt="Bench log #C-1842 — Cable management" loading="lazy"><span class="badge">#C-1842</span><span class="cap">Cable management</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/677908052_10225938312764474_3448406921835839777_n.jpg" data-ticket="#C-1843" data-label="Bench diagnostic" aria-label="Open photo: #C-1843 — Bench diagnostic"><img src="Images/677908052_10225938312764474_3448406921835839777_n.jpg" alt="Bench log #C-1843 — Bench diagnostic" loading="lazy"><span class="badge">#C-1843</span><span class="cap">Bench diagnostic</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/677966253_10225939718719622_8005067857346821381_n.jpg" data-ticket="#C-1844" data-label="Heatsink clean" aria-label="Open photo: #C-1844 — Heatsink clean"><img src="Images/677966253_10225939718719622_8005067857346821381_n.jpg" alt="Bench log #C-1844 — Heatsink clean" loading="lazy"><span class="badge">#C-1844</span><span class="cap">Heatsink clean</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/677993645_10225939719399639_4972445611396179094_n.jpg" data-ticket="#C-1845" data-label="GPU service" aria-label="Open photo: #C-1845 — GPU service"><img src="Images/677993645_10225939719399639_4972445611396179094_n.jpg" alt="Bench log #C-1845 — GPU service" loading="lazy"><span class="badge">#C-1845</span><span class="cap">GPU service</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/678057065_10225938312324463_1382238463256945691_n.jpg" data-ticket="#C-1846" data-label="PSU clean" aria-label="Open photo: #C-1846 — PSU clean"><img src="Images/678057065_10225938312324463_1382238463256945691_n.jpg" alt="Bench log #C-1846 — PSU clean" loading="lazy"><span class="badge">#C-1846</span><span class="cap">PSU clean</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/678512938_10225938315804550_2307942838544188231_n.jpg" data-ticket="#C-1847" data-label="CPU repaste" aria-label="Open photo: #C-1847 — CPU repaste"><img src="Images/678512938_10225938315804550_2307942838544188231_n.jpg" alt="Bench log #C-1847 — CPU repaste" loading="lazy"><span class="badge">#C-1847</span><span class="cap">CPU repaste</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/678559896_10225939717479591_8389727733609075587_n.jpg" data-ticket="#C-1848" data-label="Before / After" aria-label="Open photo: #C-1848 — Before / After"><img src="Images/678559896_10225939717479591_8389727733609075587_n.jpg" alt="Bench log #C-1848 — Before / After" loading="lazy"><span class="badge">#C-1848</span><span class="cap">Before / After</span></button>
+          <button type="button" class="g-tile" data-lightbox="1" data-src="Images/678765169_10225938311604445_8891934061345198217_n.jpg" data-ticket="#C-1849" data-label="Deep clean · Desktop" aria-label="Open photo: #C-1849 — Deep clean · Desktop"><img src="Images/678765169_10225938311604445_8891934061345198217_n.jpg" alt="Bench log #C-1849 — Desktop deep clean" loading="lazy"><span class="badge">#C-1849</span><span class="cap">Deep clean · Desktop</span></button>
+        </div>
+      </div>
+
+      <div class="g-thumbs" id="gThumbs" aria-label="Gallery thumbnails — scroll or click to jump">
+        <button class="g-thumb is-on" type="button" data-i="0" aria-label="Photo 1"><img src="Images/515505464_10223607857304544_4865828323739395602_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="1" aria-label="Photo 2"><img src="Images/515901462_10223605960857134_635639801881889957_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="2" aria-label="Photo 3"><img src="Images/515980821_10223605961057139_884453668331777474_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="3" aria-label="Photo 4"><img src="Images/516026902_10223606364227218_2574334457271678193_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="4" aria-label="Photo 5"><img src="Images/516032746_10223606363867209_8579563688137359735_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="5" aria-label="Photo 6"><img src="Images/516042867_10223605679290095_1440332946757396786_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="6" aria-label="Photo 7"><img src="Images/516090058_10223606387507800_453611117139646231_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="7" aria-label="Photo 8"><img src="Images/516094936_10223606363507200_7411343976713270658_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="8" aria-label="Photo 9"><img src="Images/516262456_10223606492310420_125710593858303543_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="9" aria-label="Photo 10"><img src="Images/516388053_10223606363547201_7460172596753070281_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="10" aria-label="Photo 11"><img src="Images/516409775_10223606788037813_2233451787793854066_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="11" aria-label="Photo 12"><img src="Images/516428979_10223606364307220_3239969559101628048_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="12" aria-label="Photo 13"><img src="Images/516436789_10223606492510425_1756377705164398242_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="13" aria-label="Photo 14"><img src="Images/516452297_10223606783877709_2887027364475515999_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="14" aria-label="Photo 15"><img src="Images/516454109_10223606785837758_1251219115602587254_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="15" aria-label="Photo 16"><img src="Images/516508730_10223606363747206_660517114451209120_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="16" aria-label="Photo 17"><img src="Images/516538601_10223606784757731_2001673250992026945_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="17" aria-label="Photo 18"><img src="Images/516542679_10223606392947936_4002389780559410235_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="18" aria-label="Photo 19"><img src="Images/516544812_10223607570937385_407294530400522283_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="19" aria-label="Photo 20"><img src="Images/516557932_10223606366467274_9158206809354927411_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="20" aria-label="Photo 21"><img src="Images/516609414_10223606492670429_3745384232744537233_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="21" aria-label="Photo 22"><img src="Images/516681354_10223605960737131_6188563673020474092_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="22" aria-label="Photo 23"><img src="Images/516767842_10223607570497374_5131790351654437471_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="23" aria-label="Photo 24"><img src="Images/516772772_10223606363627203_2971695753495620292_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="24" aria-label="Photo 25"><img src="Images/516825193_10223606366867284_645747731235128927_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="25" aria-label="Photo 26"><img src="Images/516966406_10223606387907810_5188028022147736771_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="26" aria-label="Photo 27"><img src="Images/517025303_10223606492430423_3890086635234159930_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="27" aria-label="Photo 28"><img src="Images/517030122_10223606366627278_1958475816770658932_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="28" aria-label="Photo 29"><img src="Images/517036868_10223606492590427_5492548500306831463_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="29" aria-label="Photo 30"><img src="Images/517139448_10223606362987187_6134175084521758502_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="30" aria-label="Photo 31"><img src="Images/517165440_10223606786477774_2351981295502311270_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="31" aria-label="Photo 32"><img src="Images/517207863_10223606787757806_6103020773420879975_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="32" aria-label="Photo 33"><img src="Images/517419056_10223606364067214_7060466775916796111_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="33" aria-label="Photo 34"><img src="Images/517581623_10223607571897409_1022529652429146086_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="34" aria-label="Photo 35"><img src="Images/517711413_10223607571937410_8010293984194508911_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="35" aria-label="Photo 36"><img src="Images/517865393_10223606362507175_1138829705625560926_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="36" aria-label="Photo 37"><img src="Images/677800863_10225939721839700_4596600791880235009_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="37" aria-label="Photo 38"><img src="Images/677803552_10225938310404415_2820705239002332155_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="38" aria-label="Photo 39"><img src="Images/677829588_10225938310924428_1743959213959566038_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="39" aria-label="Photo 40"><img src="Images/677862149_10225938314084507_5316932498219477238_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="40" aria-label="Photo 41"><img src="Images/677863766_10225938315164534_8164938521083096579_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="41" aria-label="Photo 42"><img src="Images/677908052_10225938312764474_3448406921835839777_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="42" aria-label="Photo 43"><img src="Images/677966253_10225939718719622_8005067857346821381_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="43" aria-label="Photo 44"><img src="Images/677993645_10225939719399639_4972445611396179094_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="44" aria-label="Photo 45"><img src="Images/678057065_10225938312324463_1382238463256945691_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="45" aria-label="Photo 46"><img src="Images/678512938_10225938315804550_2307942838544188231_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="46" aria-label="Photo 47"><img src="Images/678559896_10225939717479591_8389727733609075587_n.jpg" alt="" loading="lazy"></button>
+        <button class="g-thumb" type="button" data-i="47" aria-label="Photo 48"><img src="Images/678765169_10225938311604445_8891934061345198217_n.jpg" alt="" loading="lazy"></button>
+      </div>
+    </div>
+
+    <div class="bench-log-foot reveal">
+      <div class="row">
+        <div><div class="n"><span class="count" data-count="48">0</span></div><div class="l">Recent service tickets shown</div></div>
+        <div><div class="n"><span class="count" data-count="100">0</span><span class="ok">%</span></div><div class="l">Quote-first, fixed-fee</div></div>
+        <div><div class="n">−<span class="count" data-count="45">0</span><span class="ok">°C</span></div><div class="l">Avg temp drop, before / after</div></div>
+      </div>
+      <a class="btn btn-accent" href="tel:09208570392"><span>Add yours · 0920-857-0392</span><span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="proc-head reveal">
+      <h2>Four steps. <em>No surprises.</em></h2>
+      <p class="meta">// PROC-V2 · Standardized service flow we run on every single unit, regardless of brand or condition. Documented, repeatable, photographed.</p>
+    </div>
+    <div class="proc-grid">
+      <div class="step reveal">
+        <div class="num">01</div>
+        <h4>Intake &amp; Diagnostic</h4>
+        <p>Unit logged, baseline temps recorded, dust load assessed. You get a written quote before a single screw is turned.</p>
+        <div class="time">~ 15 minutes</div>
+      </div>
+      <div class="step reveal">
+        <div class="num">02</div>
+        <h4>Disassembly</h4>
+        <p>Bag-and-tag teardown. Each component photographed, fasteners labeled. Nothing goes back in the wrong slot.</p>
+        <div class="time">~ 25 minutes</div>
+      </div>
+      <div class="step reveal">
+        <div class="num">03</div>
+        <h4>Clean &amp; Repaste</h4>
+        <p>Compressed-air, brush, and IPA cleaning at the heatsink, fan blades, PSU, and PCB. Fresh paste applied.</p>
+        <div class="time">~ 40 minutes</div>
+      </div>
+      <div class="step reveal">
+        <div class="num">04</div>
+        <h4>Reassembly &amp; Test</h4>
+        <p>Stress-tested for 20 minutes. Final temp readings logged. Delivered with a printed before/after report.</p>
+        <div class="time">~ 30 minutes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing light" id="pricing">
+  <div class="wrap">
+    <div class="price-head reveal">
+      <div>
+        <div class="eyebrow">[ 03 ] · Service Tiers</div>
+        <h2 style="margin-top:18px">Honest tiers.<br><em>Honest peso.</em></h2>
+      </div>
+      <p style="font-size:17px">Every tier is fixed-fee — what we quote at intake is what you pay at pickup. Senior &amp; student discounts available; ask at booking.</p>
+    </div>
+    <div class="price-grid">
+      <div class="tier reveal">
+        <div class="tier-head">
+          <h3>Refresh</h3>
+          <span class="badge">Tier 01</span>
+        </div>
+        <p class="desc">For PCs that "feel slow." Quick clean, light repaste if needed. Done in an afternoon.</p>
+        <div class="price"><span class="cur">₱</span>450<span class="from">/ unit</span></div>
+        <ul>
+          <li>Exterior &amp; case dust extraction</li>
+          <li>Heatsink &amp; fan air-clean</li>
+          <li>Visual diagnostic report</li>
+          <li>Same-day return</li>
+        </ul>
+        <a class="btn btn-ink" href="tel:09208570392"><span>Book Refresh</span><span class="arr">→</span></a>
+      </div>
+      <div class="tier feat reveal">
+        <div class="tier-head">
+          <h3>Deep Clean</h3>
+          <span class="badge">Most Popular</span>
+        </div>
+        <p class="desc">Full teardown, thermal repaste, cable tidy. The full Herbie treatment your PC deserves.</p>
+        <div class="price"><span class="cur">₱</span>600<span class="from">/ unit</span></div>
+        <ul>
+          <li>Full disassembly + photo log</li>
+          <li>ARCTIC MX-4 thermal repaste</li>
+          <li>PSU &amp; GPU shroud clean</li>
+          <li>Cable management pass</li>
+          <li>Stress-tested before pickup</li>
+          <li>Printed before/after report</li>
+        </ul>
+        <a class="btn btn-paper" href="tel:09208570392"><span>Book Deep Clean</span><span class="arr">→</span></a>
+      </div>
+      <div class="tier reveal">
+        <div class="tier-head">
+          <h3>Overhaul</h3>
+          <span class="badge">Tier 03</span>
+        </div>
+        <p class="desc">For neglected rigs &amp; gaming builds. Includes part replacement (fans, paste, thermal pads).</p>
+        <div class="price"><span class="cur">₱</span>1,000<span class="from">/ unit</span></div>
+        <ul>
+          <li>Everything in Deep Clean</li>
+          <li>Fan replacement (1 unit incl.)</li>
+          <li>Thermal pad replacement</li>
+          <li>Premium paste (Kryonaut option)</li>
+          <li>BIOS fan curve tuning</li>
+          <li>30-day temperature warranty</li>
+        </ul>
+        <a class="btn btn-ink" href="tel:09208570392"><span>Book Overhaul</span><span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section class="coverage light" id="coverage">
+  <div class="wrap cov-grid">
+    <div class="cov-info reveal">
+      <div class="eyebrow">[ 04 ] · Service Area</div>
+      <h2 style="margin-top:18px">Based in <em>Tondo.</em><br>We come to you.</h2>
+      <p>Our shop is on San Pedro St — but we also do <strong style="color:var(--ink)">home service across Metro Manila</strong> with a minimal transportation fee. Drop-off, pick-up, or we come to you and clean your unit on-site. Ideal for desktops you'd rather not unplug.</p>
+      <div style="display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border:1px dashed var(--rust);border-radius:999px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:24px">
+        <span style="width:7px;height:7px;border-radius:50%;background:var(--rust)"></span>
+        Home service available · Minimal transport fee
+      </div>
+      <ul class="cov-list">
+        <li>Tondo</li>
+        <li>Binondo</li>
+        <li>Sta. Cruz</li>
+        <li>San Nicolas</li>
+        <li>Quiapo</li>
+        <li>Sampaloc</li>
+        <li>Manila CBD</li>
+        <li>+ Pickup citywide</li>
+      </ul>
+      <a class="btn btn-ink" href="tel:09208570392"><span>Schedule a Pickup</span><span class="arr">→</span></a>
+    </div>
+    <div class="cov-map reveal" aria-label="Service coverage map">
+      <iframe
+        src="https://www.google.com/maps?q=205+San+Pedro+St,+Tondo,+Manila,+Metro+Manila&hl=en&z=14&output=embed"
+        width="100%" height="100%" style="border:0;display:block" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Herbie PC Care — 205 San Pedro St, Tondo, Manila"></iframe>
+      <div class="map-card">
+        <div class="map-card-eye">// SHOP LOCATION</div>
+        <div class="map-card-name">205 San Pedro St</div>
+        <div class="map-card-sub">Tondo, Manila</div>
+        <a class="map-card-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=205+San+Pedro+St,+Tondo,+Manila">Get directions →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="faq-grid">
+      <div class="reveal">
+        <div class="eyebrow" style="color:var(--rust)">[ Frequently Asked ]</div>
+        <h2 style="margin-top:18px">Things people<br>ask <em>before booking.</em></h2>
+        <p class="lede">Plain-English answers from the bench. If yours isn't here, call us — we answer the line ourselves.</p>
+        <a class="btn btn-ink" href="tel:09208570392" style="margin-top:24px"><span>Call 0920-857-0392</span><span class="arr">→</span></a>
+        <div class="helper" style="margin-top:18px">// Mon–Sat · 9am–7pm · Avg response &lt; 5 min</div>
+      </div>
+      <div class="faq-list reveal">
+        <details>
+          <summary>Do you back up my data first?</summary>
+          <div class="ans">No — we only work on hardware. Your files, accounts, and OS are never opened, copied, or browsed. We work on the cooling system, not what's running on it.</div>
+        </details>
+        <details>
+          <summary>What if you find more problems mid-service?</summary>
+          <div class="ans">We stop, photograph what we found, and call you. Nothing is replaced or paid for without your sign-off — quote-first is non-negotiable.</div>
+        </details>
+        <details>
+          <summary>How long does a deep clean take?</summary>
+          <div class="ans">Standard turnaround is 24 hours. Most desktops dropped off before noon are picked up the same day. Laptops average 48 hours due to the additional teardown.</div>
+        </details>
+        <details>
+          <summary>Do you do home service?</summary>
+          <div class="ans">Yes — anywhere in Metro Manila, with a minimal transport fee depending on distance. Ideal for desktops you'd rather not unplug or for owners who can't drop off.</div>
+        </details>
+        <details>
+          <summary>What thermal paste do you use?</summary>
+          <div class="ans">ARCTIC MX-4 on every Deep Clean — the workshop default for its 6–8 year lifespan. Thermal Grizzly Kryonaut is available on request and standard on the Overhaul tier.</div>
+        </details>
+        <details>
+          <summary>Do you replace parts?</summary>
+          <div class="ans">Only on the Overhaul tier or with explicit sign-off after diagnostic. We don't swap a fan because we "noticed it" — we quote and you decide. No silent upsells.</div>
+        </details>
+        <details>
+          <summary>Do you accept GCash or Maya?</summary>
+          <div class="ans">Yes — cash, GCash, and Maya at pickup. No credit card terminals on-site. We send the GCash/Maya QR by SMS the day of pickup.</div>
+        </details>
+        <details>
+          <summary>What's your warranty?</summary>
+          <div class="ans">30-day temperature warranty on the Overhaul tier — if your unit doesn't hold the post-service temp drop within 30 days, we re-clean for free. Refresh and Deep Clean tiers carry a 7-day rework guarantee.</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section class="voice light">
+  <div class="wrap voice-grid">
+    <div class="left reveal">
+      <div class="voice-photo" role="img" aria-label="Herbie at the workshop bench">
+        <span class="stamp">On the Bench · Tondo</span>
+        <span class="corner">// PORTRAIT-A1</span>
+      </div>
+      <div class="eyebrow">[ 05 ] · The Technician</div>
+      <div class="name">Herbie</div>
+      <div class="role">Lead Technician · Founder</div>
+      <ul class="meta-list">
+        <li><span>Trained on</span><span>Custom Builds &amp; OEM</span></li>
+        <li><span>Years working PCs</span><span>10+</span></li>
+        <li><span>Units cleaned</span><span>1,400+</span></li>
+        <li><span>Workshop</span><span>Tondo, Manila</span></li>
+        <li><span>Direct line</span><span>0920-857-0392</span></li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <div class="quote">A PC is just a quiet thing that breathes. When it stops breathing, it stops thinking. My job is to give it back its breath — clean it like I'd clean my own, and tell you exactly what I found, in plain words, before I touch a screwdriver.</div>
+      <div class="proof-row">
+        <div class="cell"><div class="n">−45°C</div><div class="l">Avg Temp Drop</div></div>
+        <div class="cell"><div class="n">24 hrs</div><div class="l">Std Turnaround</div></div>
+        <div class="cell"><div class="n">100%</div><div class="l">Quote-First Policy</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIG CTA -->
+<section class="cta">
+  <div class="wrap cta-grid">
+    <div class="reveal">
+      <div class="eyebrow" style="color:var(--accent)">[ 06 ] · Booking Line</div>
+      <h2 style="margin-top:22px">If it's <em>throttling,</em> it's already too late. <em>Call us today.</em></h2>
+      <p class="cta-sub">We answer the line ourselves — no menus, no hold music. Tell us your PC, your symptoms, and we'll quote you a fair price before you leave the call.</p>
+    </div>
+    <div class="phonecard reveal">
+      <div class="lbl"><span class="live"></span>Direct line · open now</div>
+      <a class="num" href="tel:09208570392">0920·857·0392</a>
+      <div class="row"><span>Hours</span><span>Mon–Sat · 9am–7pm</span></div>
+      <div class="row"><span>Address</span><span>205 San Pedro St, Tondo</span></div>
+      <div class="row"><span>Response</span><span>&lt; 5 minutes</span></div>
+      <a class="btn btn-accent" href="tel:09208570392" style="color:var(--ink)!important"><span>Tap to Call</span><span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top" style="margin-bottom:18px;display:inline-flex">
+          <span class="mark">H<span style="font-size:7px;align-self:flex-start;margin-top:2px">PC</span></span>
+          <span>Herbie<span style="opacity:.55"> · </span>PC Care</span>
+        </a>
+        <p>A small shop in Tondo doing one thing carefully: keeping your PC cool, quiet, and breathing. Drop-off, pick-up, or on-site.</p>
+      </div>
+      <div>
+        <h5>Site</h5>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="herbie-pc-care/about.html">About</a></li>
+          <li><a href="herbie-pc-care/blog.html">Blog</a></li>
+          <li><a href="herbie-pc-care/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Visit</h5>
+        <ul>
+          <li>205 San Pedro St</li>
+          <li>Tondo, Manila</li>
+          <li>Metro Manila, PH</li>
+          <li style="margin-top:10px;color:var(--accent)">Mon–Sat · 9am–7pm</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal &amp; Contact</h5>
+        <ul>
+          <li><a href="tel:09208570392">0920-857-0392</a></li>
+          <li><a href="sms:09208570392">SMS / Viber</a></li>
+          <li><a href="herbie-pc-care/privacy.html">Privacy Policy</a></li>
+          <li><a href="herbie-pc-care/terms.html">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Herbie PC Care · Tondo, Manila</span>
+      <span>Built clean · Run cool</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // diagnostic toggle
+  const before = {
+    'CPU Temp':  {v:'89°C', cls:'bad',  pct:92, barBad:true},
+    'Fan RPM':   {v:'1,180', cls:'bad', pct:18, barBad:true},
+    'Dust Load': {v:'92 %',  cls:'bad', pct:94, barBad:true},
+    'Airflow':   {v:'BLOCKED', cls:'bad', pct:8, barBad:true},
+    'Thermal Paste':{v:'CRACKED', cls:'bad', pct:14, barBad:true}
+  };
+  const after = {
+    'CPU Temp':  {v:'38°C', cls:'good', pct:20},
+    'Fan RPM':   {v:'4,820', cls:'good', pct:88},
+    'Dust Load': {v:'4 %',   cls:'good', pct:6},
+    'Airflow':   {v:'CLEAR', cls:'good', pct:96},
+    'Thermal Paste':{v:'FRESH', cls:'good', pct:100}
+  };
+  const rows = document.querySelectorAll('#rows .diag-row');
+  const status = document.getElementById('status');
+  function setMode(state){
+    rows.forEach(r=>{
+      const k = r.querySelector('.k').textContent;
+      const data = state[k]; if(!data) return;
+      const v = r.querySelector('.v');
+      const bar = r.querySelector('.bar');
+      const i = bar.querySelector('i');
+      v.textContent = data.v;
+      v.classList.remove('good','bad');
+      v.classList.add(data.cls);
+      bar.classList.toggle('bad', !!data.barBad);
+      i.style.width = data.pct+'%';
+    });
+    status.textContent = state===after ? '● ALL SYSTEMS NOMINAL' : '● THROTTLING DETECTED';
+    status.style.color = state===after ? 'var(--accent)' : '#FF6B47';
+  }
+  document.getElementById('btnBefore').addEventListener('click',(e)=>{
+    document.getElementById('btnBefore').classList.add('is-on');
+    document.getElementById('btnAfter').classList.remove('is-on');
+    setMode(before);
+  });
+  document.getElementById('btnAfter').addEventListener('click',(e)=>{
+    document.getElementById('btnAfter').classList.add('is-on');
+    document.getElementById('btnBefore').classList.remove('is-on');
+    setMode(after);
+  });
+
+  // dust particles
+  const dust = document.getElementById('dust');
+  for(let i=0;i<32;i++){
+    const s = document.createElement('span');
+    s.style.left = Math.random()*100+'%';
+    s.style.bottom = '-10px';
+    s.style.animationDuration = (10 + Math.random()*18) + 's';
+    s.style.animationDelay = (Math.random()*8) + 's';
+    s.style.opacity = (0.25 + Math.random()*0.55);
+    s.style.transform = `scale(${0.6 + Math.random()*1.6})`;
+    dust.appendChild(s);
+  }
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:.12, rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // bench gallery — horizontal swipe + arrows + thumbnail sync
+  const gallery = document.getElementById('benchGallery');
+  if(gallery){
+    const track = document.getElementById('gTrack');
+    const tiles = [...track.querySelectorAll('.g-tile')];
+    const thumbsEl = document.getElementById('gThumbs');
+    const thumbs = [...thumbsEl.querySelectorAll('.g-thumb')];
+    const prev = document.getElementById('gPrev');
+    const next = document.getElementById('gNext');
+
+    function step(){
+      const t = tiles[0]; if(!t) return 320;
+      const cs = getComputedStyle(track);
+      const gap = parseFloat(cs.columnGap || cs.gap || '0');
+      return t.offsetWidth + gap;
+    }
+    function pageStep(){
+      const visible = Math.max(1, Math.floor(track.clientWidth / step()));
+      return step() * visible;
+    }
+
+    prev.addEventListener('click', ()=> track.scrollBy({left: -pageStep(), behavior:'smooth'}));
+    next.addEventListener('click', ()=> track.scrollBy({left:  pageStep(), behavior:'smooth'}));
+
+    thumbs.forEach((th, i)=> th.addEventListener('click', ()=>{
+      const tile = tiles[i];
+      if(!tile) return;
+      track.scrollTo({left: tile.offsetLeft - track.offsetLeft, behavior:'smooth'});
+    }));
+
+    function update(){
+      const center = track.scrollLeft + track.clientWidth/2;
+      let nearest = 0, nearestDist = Infinity;
+      tiles.forEach((t, i)=>{
+        const c = t.offsetLeft + t.offsetWidth/2;
+        const d = Math.abs(c - center);
+        if(d < nearestDist){ nearestDist = d; nearest = i; }
+      });
+      thumbs.forEach((th, i)=> th.classList.toggle('is-on', i === nearest));
+      const aThumb = thumbs[nearest];
+      if(aThumb){
+        const tRect = aThumb.getBoundingClientRect();
+        const cRect = thumbsEl.getBoundingClientRect();
+        if(tRect.left < cRect.left + 30 || tRect.right > cRect.right - 30){
+          thumbsEl.scrollTo({
+            left: aThumb.offsetLeft - thumbsEl.clientWidth/2 + aThumb.clientWidth/2,
+            behavior:'smooth'
+          });
+        }
+      }
+      prev.disabled = track.scrollLeft <= 4;
+      next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    }
+    let st;
+    track.addEventListener('scroll', ()=>{ clearTimeout(st); st = setTimeout(update, 80); }, {passive:true});
+
+    let isDown = false, startX = 0, startScroll = 0, moved = false;
+    track.addEventListener('mousedown', (e)=>{
+      if(e.button !== 0) return;
+      isDown = true; moved = false;
+      startX = e.pageX; startScroll = track.scrollLeft;
+    });
+    track.addEventListener('mousemove', (e)=>{
+      if(!isDown) return;
+      const dx = e.pageX - startX;
+      if(Math.abs(dx) > 5) moved = true;
+      if(moved){ e.preventDefault(); track.scrollLeft = startScroll - dx; }
+    });
+    function endDrag(){ isDown = false; setTimeout(()=>{ moved = false; }, 0); }
+    track.addEventListener('mouseup', endDrag);
+    track.addEventListener('mouseleave', endDrag);
+    tiles.forEach(t=> t.addEventListener('click', (e)=>{
+      if(moved){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        t.dataset.dragged = '1';
+        setTimeout(()=>{ t.dataset.dragged = '0'; }, 50);
+      }
+    }));
+
+    let inView = false;
+    new IntersectionObserver((entries)=>{
+      entries.forEach(e=> inView = e.isIntersecting && e.intersectionRatio > 0.4);
+    }, {threshold:[0.4]}).observe(gallery);
+    document.addEventListener('keydown', (e)=>{
+      if(!inView) return;
+      const tag = (e.target.tagName||'').toUpperCase();
+      if(['INPUT','TEXTAREA','SELECT'].includes(tag)) return;
+      if(e.key === 'ArrowLeft'){ e.preventDefault(); track.scrollBy({left:-pageStep(), behavior:'smooth'}); }
+      else if(e.key === 'ArrowRight'){ e.preventDefault(); track.scrollBy({left: pageStep(), behavior:'smooth'}); }
+    });
+
+    window.addEventListener('resize', update);
+    update();
+  }
+
+  // workshop frame reveal — staggered by index
+  const frames = document.querySelectorAll('.frame');
+  const frameIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const idx = [...frames].indexOf(e.target);
+        e.target.style.transitionDelay = (idx * 90) + 'ms';
+        e.target.classList.add('in');
+        frameIO.unobserve(e.target);
+      }
+    });
+  }, {threshold:.18, rootMargin:'0px 0px -40px 0px'});
+  frames.forEach(f=>frameIO.observe(f));
+
+  // counter animation
+  function animateCount(el){
+    const target = parseFloat(el.dataset.count || '0');
+    const dur = 1600;
+    const start = performance.now();
+    const fmt = target >= 1000 ? (n)=>Math.round(n).toLocaleString('en-US') : (n)=>Math.round(n).toString();
+    function step(t){
+      const p = Math.min(1, (t - start)/dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(target * eased);
+      if(p < 1) requestAnimationFrame(step);
+      else el.textContent = fmt(target);
+    }
+    requestAnimationFrame(step);
+  }
+  const countIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ animateCount(e.target); countIO.unobserve(e.target); }
+    });
+  }, {threshold:.6});
+  document.querySelectorAll('.count').forEach(c=>countIO.observe(c));
+
+  // scroll progress bar
+  const bar = document.getElementById('scrollBar');
+  let ticking = false;
+  function updateBar(){
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+    bar.style.width = pct + '%';
+    ticking = false;
+  }
+  window.addEventListener('scroll', ()=>{
+    if(!ticking){ requestAnimationFrame(updateBar); ticking = true; }
+  }, {passive:true});
+
+  // mouse tilt on diagnostic panel
+  const diag = document.querySelector('.diag');
+  if(diag && window.matchMedia('(pointer:fine)').matches){
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!reduceMotion){
+      diag.addEventListener('mousemove', (e)=>{
+        const r = diag.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        diag.style.transform = `perspective(1000px) rotateY(${x*6}deg) rotateX(${-y*6}deg) translateZ(0)`;
+      });
+      diag.addEventListener('mouseleave', ()=>{
+        diag.style.transform = 'perspective(1000px) rotateY(0) rotateX(0)';
+      });
+    }
+  }
+
+  // smooth in-page scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      const id = a.getAttribute('href');
+      if(id.length > 1){
+        const t = document.querySelector(id);
+        if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+      }
+    });
+  });
+
+  // lightbox controller
+  const lb = document.getElementById('lightbox');
+  if(lb){
+    const lbImg = document.getElementById('lbImg');
+    const lbTicket = document.getElementById('lbTicket');
+    const lbLabel = document.getElementById('lbLabel');
+    const lbCounter = document.getElementById('lbCounter');
+    const lbItems = [...document.querySelectorAll('[data-lightbox]')];
+    let lbI = 0;
+    function lbOpen(n){
+      if(!lbItems.length) return;
+      lbI = (n + lbItems.length) % lbItems.length;
+      const t = lbItems[lbI];
+      lbImg.src = t.dataset.src;
+      lbImg.alt = t.dataset.label || '';
+      lbTicket.textContent = t.dataset.ticket || '';
+      lbLabel.textContent = t.dataset.label || '';
+      lbCounter.textContent = (lbI+1)+' / '+lbItems.length;
+      lb.classList.add('is-on');
+      lb.setAttribute('aria-hidden','false');
+      document.body.classList.add('lb-open');
+    }
+    function lbClose(){
+      lb.classList.remove('is-on');
+      lb.setAttribute('aria-hidden','true');
+      document.body.classList.remove('lb-open');
+      lbImg.src = '';
+    }
+    lbItems.forEach((t, n)=> t.addEventListener('click', (e)=>{
+      // suppress click that fires after a drag-swipe of the gallery track
+      if(t.dataset.dragged === '1'){ t.dataset.dragged = '0'; return; }
+      e.preventDefault(); lbOpen(n);
+    }));
+    lb.querySelector('.lb-close').addEventListener('click', lbClose);
+    lb.querySelector('.lb-nav.prev').addEventListener('click', ()=> lbOpen(lbI-1));
+    lb.querySelector('.lb-nav.next').addEventListener('click', ()=> lbOpen(lbI+1));
+    lb.addEventListener('click', (e)=>{ if(e.target === lb) lbClose(); });
+    document.addEventListener('keydown', (e)=>{
+      if(!lb.classList.contains('is-on')) return;
+      if(e.key === 'Escape') lbClose();
+      else if(e.key === 'ArrowLeft'){ e.preventDefault(); lbOpen(lbI-1); }
+      else if(e.key === 'ArrowRight'){ e.preventDefault(); lbOpen(lbI+1); }
+    }, true);
+    let lbSx = 0;
+    lb.addEventListener('touchstart', e=>{ lbSx = e.touches[0].clientX; }, {passive:true});
+    lb.addEventListener('touchend', e=>{
+      const dx = e.changedTouches[0].clientX - lbSx;
+      if(Math.abs(dx) > 40) lbOpen(dx > 0 ? lbI-1 : lbI+1);
+    });
+  }
+
+  // FAB stack staggered entrance
+  const fabStack = document.querySelector('.fab-stack');
+  if(fabStack){
+    const fabs = fabStack.querySelectorAll('.fab');
+    setTimeout(()=>{
+      fabs.forEach((f, i)=> setTimeout(()=> f.classList.add('is-in'), i * 90));
+    }, 600);
+  }
+</script>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Gallery viewer">
+  <button class="lb-close" type="button" aria-label="Close">×</button>
+  <button class="lb-nav prev" type="button" aria-label="Previous photo">←</button>
+  <button class="lb-nav next" type="button" aria-label="Next photo">→</button>
+  <figure class="lb-frame">
+    <img id="lbImg" src="" alt="">
+    <figcaption class="lb-caption">
+      <span class="lb-ticket" id="lbTicket"></span>
+      <span class="lb-label" id="lbLabel"></span>
+      <span class="lb-counter" id="lbCounter"></span>
+    </figcaption>
+  </figure>
+</div>
+
+<!-- FAB STACK -->
+<div class="fab-stack" aria-label="Quick contact">
+  <a class="fab fab-wa" href="https://wa.me/639208570392?text=Hi%20Herbie%2C%20I%27d%20like%20to%20book%20a%20clean." target="_blank" rel="noopener" aria-label="WhatsApp 0920-857-0392">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.16 5.335 5.495 0 12.05 0c3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.983zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+  </a>
+  <a class="fab fab-viber" href="viber://chat?number=%2B639208570392" aria-label="Viber 0920-857-0392">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.398.002C9.473.028 5.331.344 3.014 2.467 1.294 4.187.687 6.7.621 9.81c-.061 3.108-.135 8.933 5.487 10.516h.005l-.003 2.414s-.036.977.608 1.177c.83.281 1.246-.487 2.043-1.248l1.434-1.622c3.844.323 6.787-.405 7.124-.516.773-.252 5.156-.812 5.866-6.628.732-5.998-.358-9.795-2.328-11.51l-.011-.011C19.213.804 16.232.066 13.197.014c0 0-.225-.014-.704-.014h-1.094zm.063 1.694c.4.001.946 0 1.34.014 2.768.044 5.397.812 7.196 2.226 1.706 1.46 2.575 4.624 1.949 9.617-.6 4.881-4.114 5.187-4.768 5.397-.279.089-2.852.728-6.078.515 0 0-2.408 2.91-3.157 3.658-.117.117-.255.164-.347.141-.131-.032-.167-.187-.165-.414l.027-4.005c-4.764-1.32-4.486-6.286-4.434-8.884.057-2.598.546-4.733 1.997-6.165 1.453-1.434 4.969-2.524 6.016-2.528h.424zm.317 2.802a.355.355 0 00-.029.708c.937.062 1.713.394 2.366 1.04.654.647.997 1.564 1.057 2.69a.355.355 0 10.71-.04c-.067-1.31-.475-2.404-1.225-3.172-.752-.77-1.737-1.158-2.86-1.226zM6.93 5.4c-.27.04-.514.214-.638.473-.31.65-.165 1.293.247 1.875.412.582 1.036 1.114 1.715 1.62.679.507 1.342 1.025 1.965 1.469 1.083.766 2.003 1.222 2.713 1.295.366.038.683-.005.946-.12.263-.115.481-.318.6-.594.142-.331.232-.755.288-1.099.056-.345.099-.654.099-.926 0-.13-.024-.258-.072-.379a.355.355 0 00-.243-.208l-.79-.282-.81-.288a.355.355 0 00-.45.134l-.38.557c-.186.27-.396.25-.396.25s-1.026-.376-1.823-1.176c-.795-.797-1.176-1.823-1.176-1.823s-.022-.214.249-.4l.557-.38a.355.355 0 00.133-.45l-.288-.81-.282-.79a.355.355 0 00-.208-.243.882.882 0 00-.378-.072c-.272 0-.582.043-.926.099-.346.056-.768.146-1.099.288z"/></svg>
+  </a>
+  <a class="fab fab-call" href="tel:09208570392" aria-label="Call 0920-857-0392">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.487 17.14l-4.065-3.696a1.001 1.001 0 00-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 00.043-1.391L6.859 3.513a1 1 0 00-1.391-.087l-2.17 1.861a1 1 0 00-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 00.648-.291l1.86-2.171a.997.997 0 00-.085-1.39z"/></svg>
+  </a>
+</div>
+</body>
+</html>
