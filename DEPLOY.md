@@ -127,7 +127,39 @@ If nothing arrives:
 - **Vercel Function Logs** — Vercel dashboard → Deployments → latest → **Functions** tab → click `/api/contact` → live logs reveal Resend errors.
 - **Resend → Emails dashboard** — every send (success or fail) is logged at https://resend.com/emails. If a send shows up there but the email never arrived, check spam.
 
-### 4d. Optional — verify your domain so emails come from `intake@deskwolf.ai`
+### 4d. Optional — log every submission to a Google Sheet
+
+The function fires both Resend AND a Google Sheets webhook in parallel. Skip if you only want emails. To enable:
+
+1. **Create the sheet** — go to https://sheets.new (signed in as `contact@deskwolf.ai`). Rename it `Herbie PC Care — Intakes`.
+2. **Open Apps Script** — sheet menu **Extensions → Apps Script**. A new tab opens with `Code.gs` containing a placeholder `myFunction`.
+3. **Paste the script** — delete everything in `Code.gs` and paste the contents of [`apps-script/sheets-webhook.gs`](apps-script/sheets-webhook.gs) (in this repo). Save (Ctrl+S).
+4. **Deploy as a Web App:**
+   - Top-right **Deploy → New deployment**
+   - Click the gear icon next to "Select type" → **Web app**
+   - **Description:** `Intake webhook v1` (anything)
+   - **Execute as:** `Me (contact@deskwolf.ai)`
+   - **Who has access:** `Anyone` *(this is a public POST endpoint — required so the Vercel function can hit it without auth)*
+   - Click **Deploy**
+   - First time only: **Authorize access** → pick your account → "Advanced" → "Go to ... (unsafe)" → **Allow** *(this is a script you wrote, the warning is normal)*
+   - Copy the **Web app URL** — looks like `https://script.google.com/macros/s/AKfycby.../exec`
+5. **Add it to Vercel:**
+   - https://vercel.com/deskwolfai/herbie-pc-care/settings/environment-variables
+   - Add a new variable:
+
+     | Name | Value |
+     |---|---|
+     | `GOOGLE_SHEETS_WEBHOOK_URL` | the `script.google.com/.../exec` URL from step 4 |
+
+   - Tick all three environments (Production / Preview / Development), Save.
+6. **Redeploy** (Deployments tab → latest → "..." → Redeploy) so the new env var is picked up.
+7. **Smoke test** — submit a test entry on `/contact`. The Sheet should grow a header row + your test row within 2–3 seconds. Check Vercel function logs if nothing appears; common issue is forgetting to set "Who has access: Anyone" in step 4.
+
+> **Versioning note:** every time you edit `sheets-webhook.gs` and save, you also have to **Deploy → Manage deployments → Edit (pencil) → Version: New version → Deploy** for the live webhook to pick up the change. The URL stays the same.
+
+> **Optional shared-secret hardening:** if the URL ever leaks, randos could spam your sheet. Set `SHARED_SECRET` to a random string inside the Apps Script (top of the file), then set `SHEETS_SECRET` to the same value in Vercel. The function will include it on every POST and the script rejects mismatches.
+
+### 4e. Optional — verify your domain so emails come from `intake@deskwolf.ai`
 
 The default sender (`onboarding@resend.dev`) works out-of-the-box but only delivers to the email address registered on your Resend account. That's fine for the intake flow (`contact@deskwolf.ai` → `contact@deskwolf.ai`), but if you ever want to send confirmations back to **customers**, you need to verify your domain.
 
