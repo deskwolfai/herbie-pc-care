@@ -10,7 +10,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,30..100&family=JetBrains+Mono:wght@400;500;700&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css">
 <style>
-.contact{padding:120px 0;background:var(--paper)}
+.booking{padding:120px 0 60px;background:var(--paper);position:relative}
+.booking-head{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:end;margin-bottom:40px}
+@media (max-width:900px){.booking-head{grid-template-columns:1fr;gap:24px;align-items:start}}
+.booking-head h2{font-family:var(--serif);font-variation-settings:"opsz" 144,"SOFT" 50;font-weight:400;font-size:clamp(36px,5.4vw,64px);letter-spacing:-.02em;line-height:1;color:var(--ink)}
+.booking-head h2 em{font-style:italic;color:var(--rust);font-weight:380}
+.booking-head .lede{font-size:17px;color:#3A3D43;line-height:1.6;max-width:46ch}
+.booking-head .helper{margin-top:18px;display:flex;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+.booking-head .helper b{color:var(--ink);font-weight:500}
+.booking-frame{background:var(--paper-2);border:1px solid var(--line-l);border-radius:20px;padding:14px;box-shadow:0 30px 60px -36px rgba(14,16,20,.3);position:relative;overflow:hidden}
+.booking-frame::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg, var(--rust), transparent)}
+.booking-frame iframe{display:block;width:100%;border:0;border-radius:12px;background:#fff;min-height:680px}
+@media (max-width:900px){.booking-frame iframe{min-height:780px}}
+.booking-foot{margin-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:0 6px;font-family:var(--mono);font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--steel)}
+.booking-foot a{color:var(--rust);border-bottom:1px solid var(--rust);padding-bottom:1px;transition:opacity .2s}
+.booking-foot a:hover{opacity:.7}
+
+.contact{padding:60px 0 120px;background:var(--paper)}
+.contact-divider{padding:18px 0 0;background:var(--paper)}
+.contact-divider .divider-row{display:flex;align-items:center;gap:18px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel)}
+.contact-divider .divider-row hr{flex:1;border:0;border-top:1px solid var(--line-l)}
 .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start}
 @media (max-width:980px){.contact-grid{grid-template-columns:1fr;gap:40px}}
 
@@ -96,6 +115,44 @@
       <span><b>Hours</b> · Mon–Sat · 9 am – 7 pm</span>
       <span><b>Address</b> · 205 San Pedro St, Tondo</span>
       <span><b>Response</b> · &lt; 5 minutes</span>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="book">
+  <div class="wrap">
+    <div class="booking-head reveal">
+      <div>
+        <div class="eyebrow" style="color:var(--rust)">[ Lock a Slot ]</div>
+        <h2 style="margin-top:18px">Pick a time.<br><em>We'll be ready.</em></h2>
+      </div>
+      <div>
+        <p class="lede">Fastest path if you already know what you want — pick a slot and we'll have the bench cleared. The form below is for questions, special cases, or home pickup.</p>
+        <div class="helper">
+          <span><b>Mon–Sat</b> · 9 am – 7 pm</span>
+          <span><b>Drop-off</b> · 205 San Pedro St</span>
+          <span><b>Confirmation</b> · email + 24h reminder</span>
+        </div>
+      </div>
+    </div>
+    <div class="booking-frame reveal">
+      <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ37JLTuQMCbiwxP-wC8S0PHYIzZi45ut93A4oVK9ddkpIN3l53GX3JpTE21FEPN6ySRJmUqs3SW?gv=true" loading="lazy" title="Book a Herbie PC Care service slot"></iframe>
+    </div>
+    <div class="booking-foot reveal">
+      <span>// Picker won't load? <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ37JLTuQMCbiwxP-wC8S0PHYIzZi45ut93A4oVK9ddkpIN3l53GX3JpTE21FEPN6ySRJmUqs3SW" target="_blank" rel="noopener">Open the booking page in a new tab</a></span>
+      <span>For home pickup or anything tricky · <a href="tel:09208570392">0920-857-0392</a></span>
+    </div>
+  </div>
+</section>
+
+<!-- "Or, send us a message" divider -->
+<section class="contact-divider">
+  <div class="wrap">
+    <div class="divider-row reveal">
+      <hr>
+      <span>Or, send a message instead</span>
+      <hr>
     </div>
   </div>
 </section>
