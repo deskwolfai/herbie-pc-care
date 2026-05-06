@@ -87,23 +87,56 @@ That's the live site. Done.
 
 ---
 
-## Step 4 — Activate the contact form (one-time)
+## Step 4 — Activate the contact form (one-time, Resend)
 
-The contact form posts to FormSubmit.co, free, no signup, no API key. But the destination email needs a one-time verification.
+The contact form posts to a Vercel Serverless Function at `/api/contact`, which forwards the submission to Herbie via [Resend](https://resend.com). You need to add **one** environment variable in Vercel for this to work.
 
-1. Go to your live site (`https://your-site.vercel.app/contact`).
-2. Fill in the form with **any test data** and submit.
-3. Check the inbox of the email address listed in `contact.html`'s form `action` attribute (currently `contact@deskwolf.ai`).
-4. There will be a "Confirm Email" message from FormSubmit. Click the confirmation link.
-5. From now on, every form submission lands as an email in that inbox. Real customers can submit immediately.
+### 4a. Get a Resend API key
 
-To change the destination email later, edit `contact.html` and change:
+1. Sign in at https://resend.com (account is on `contact@deskwolf.ai`).
+2. Go to **API Keys** → **Create API Key**.
+3. Name it `herbie-pc-care-prod`, give it **Sending access**, click create.
+4. Copy the key (starts with `re_…`). Resend shows it **once** — don't navigate away until you've pasted it into the next step.
 
-```html
-<form ... action="https://formsubmit.co/contact@deskwolf.ai" ...>
-```
+### 4b. Add it to Vercel
 
-…to whatever address Herbie wants to receive intake messages on, then push. Vercel auto-redeploys, and the new address goes through one more verification round.
+1. Open the Vercel dashboard for this project: https://vercel.com/deskwolfai/herbie-pc-care
+2. **Settings → Environment Variables**
+3. Add three vars (the last two are optional but recommended):
+
+   | Name | Value | Environments |
+   |---|---|---|
+   | `RESEND_API_KEY` | `re_…` (the key from 4a) | Production, Preview, Development |
+   | `INTAKE_TO` | `contact@deskwolf.ai` | Production, Preview, Development |
+   | `INTAKE_FROM` | `Herbie PC Care <onboarding@resend.dev>` | Production, Preview, Development |
+
+4. Click **Save**.
+5. Go to **Deployments** → latest deploy → "..." → **Redeploy** to pick up the new env vars (or just push any commit).
+
+### 4c. Smoke-test it
+
+1. Go to https://herbie-pc-care.vercel.app/contact
+2. Fill the form with test data (use a real-looking phone number — `09171234567`).
+3. Click **Send Intake**.
+4. The form should swap to "Got it — message in." within 1–2 seconds.
+5. Check the inbox of `contact@deskwolf.ai` — there should be an email titled `New intake — <name> · <unit>`.
+
+If nothing arrives:
+
+- **Browser console** in DevTools → look for a 400/500 from `/api/contact`. Most common: `RESEND_API_KEY` not set in the right environment, or you forgot to redeploy after adding it.
+- **Vercel Function Logs** — Vercel dashboard → Deployments → latest → **Functions** tab → click `/api/contact` → live logs reveal Resend errors.
+- **Resend → Emails dashboard** — every send (success or fail) is logged at https://resend.com/emails. If a send shows up there but the email never arrived, check spam.
+
+### 4d. Optional — verify your domain so emails come from `intake@deskwolf.ai`
+
+The default sender (`onboarding@resend.dev`) works out-of-the-box but only delivers to the email address registered on your Resend account. That's fine for the intake flow (`contact@deskwolf.ai` → `contact@deskwolf.ai`), but if you ever want to send confirmations back to **customers**, you need to verify your domain.
+
+1. Resend dashboard → **Domains** → **Add Domain** → `deskwolf.ai`
+2. Resend gives you a handful of DNS records (SPF, DKIM, DMARC). Add them at your domain registrar (Namecheap, GoDaddy, Hostinger, etc).
+3. Wait a few minutes, click **Verify**.
+4. Once verified, change the `INTAKE_FROM` env var in Vercel to:
+   `Herbie PC Care <intake@deskwolf.ai>`
+5. Trigger a redeploy.
 
 ---
 

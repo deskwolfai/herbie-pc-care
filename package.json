@@ -1,0 +1,13 @@
+{
+  "name": "herbie-pc-care",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Marketing site for Herbie PC Care — static HTML/CSS/JS plus a single Vercel serverless function for the contact form.",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "resend": "^4.0.1"
+  }
+}

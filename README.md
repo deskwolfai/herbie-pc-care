@@ -12,7 +12,7 @@ Pure static — HTML, CSS, JS. No build step, no framework, no backend.
 - 9 HTML pages (homepage, about, blog index, 3 blog posts, contact, privacy, terms)
 - Shared `assets/styles.css` + `assets/enhance.js` for sub-pages
 - 49 customer photos in `/Images/` powering the bench-log gallery
-- Contact form posts to [FormSubmit.co](https://formsubmit.co) (no backend needed)
+- Single Vercel Serverless Function at `/api/contact` that forwards intake submissions to [Resend](https://resend.com), which delivers the email
 
 ## Local preview
 
@@ -38,10 +38,14 @@ See [`DEPLOY.md`](DEPLOY.md) for the GitHub + Vercel walk-through.
 ├── blog-dust-the-silent-killer.html
 ├── blog-laptop-vs-desktop.html
 ├── blog-thermal-paste-101.html
-├── contact.html                     # Contact form posts to FormSubmit.co
+├── contact.html                     # Posts to /api/contact via fetch (JSON)
 ├── privacy.html
 ├── terms.html
 ├── vercel.json                      # Cache headers + clean URLs
+├── package.json                     # Declares the resend SDK dep
+├── .env.example                     # Documents required env vars
+├── api/
+│   └── contact.js                   # Vercel function: validates + sends via Resend
 ├── assets/
 │   ├── styles.css                   # Shared design system for sub-pages
 │   └── enhance.js                   # Shared scroll-progress, lightbox, FAB controllers

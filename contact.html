@@ -123,10 +123,7 @@
       </div>
     </div>
 
-    <form class="form reveal" id="intakeForm" action="https://formsubmit.co/contact@deskwolf.ai" method="POST">
-      <input type="hidden" name="_subject" value="New intake — Herbie PC Care">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
+    <form class="form reveal" id="intakeForm" action="/api/contact" method="POST">
       <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <div class="lbl">// Service Intake</div>
       <h3>Or send us your details.</h3>
@@ -275,27 +272,36 @@
 </div>
 
 <script>
-  // intercept form submit and POST via fetch so user stays on page
+  // intercept form submit and POST via fetch so the user stays on page
   const intake = document.getElementById('intakeForm');
   if(intake){
+    const submitBtn = intake.querySelector('button[type="submit"]');
     intake.addEventListener('submit', async (e)=>{
+      e.preventDefault();
       // honeypot — if filled, silently fake-success
       if(intake.querySelector('input[name="_honey"]').value){
-        e.preventDefault(); intake.classList.add('is-sent'); return;
+        intake.classList.add('is-sent'); return;
       }
-      e.preventDefault();
-      const data = new FormData(intake);
+      const data = Object.fromEntries(new FormData(intake).entries());
+      const original = submitBtn ? submitBtn.innerHTML : '';
+      if(submitBtn){ submitBtn.disabled = true; submitBtn.innerHTML = '<span>Sending…</span>'; }
       try{
-        const res = await fetch(intake.action, {method:'POST', body:data, headers:{'Accept':'application/json'}});
+        const res = await fetch(intake.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        });
         if(res.ok){
           intake.classList.add('is-sent');
           intake.scrollIntoView({behavior:'smooth', block:'center'});
         } else {
-          // fall back to native form submit if endpoint refuses XHR
-          intake.submit();
+          const err = await res.json().catch(()=>({error:'Submission failed.'}));
+          if(submitBtn){ submitBtn.disabled = false; submitBtn.innerHTML = original; }
+          alert((err && err.error) || 'Could not send. Please call 0920-857-0392 instead.');
         }
       } catch(err){
-        intake.submit();
+        if(submitBtn){ submitBtn.disabled = false; submitBtn.innerHTML = original; }
+        alert('Could not reach the server. Please call 0920-857-0392 instead.');
       }
     });
   }
