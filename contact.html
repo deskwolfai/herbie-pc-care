@@ -348,16 +348,40 @@
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(data)
         });
+        const body = await res.json().catch(()=>({}));
         if(res.ok){
+          // Success path — at least one pipeline landed. If others partially
+          // failed, surface them to the console so an operator looking at
+          // DevTools sees which channel went down (e.g. email worked, sheet
+          // logging failed) without alarming the customer.
+          if(Array.isArray(body.results)){
+            body.results.forEach(r => {
+              if(r.ok) console.log(`[contact] ${r.name} ok`, r.detail);
+              else     console.warn(`[contact] ${r.name} partially failed (submission still saved):`, r.detail);
+            });
+          }
           intake.classList.add('is-sent');
           intake.scrollIntoView({behavior:'smooth', block:'center'});
         } else {
-          const err = await res.json().catch(()=>({error:'Submission failed.'}));
+          // Hard failure — every configured pipeline failed.
+          // Surface per-pipeline detail when the function returns it.
           if(submitBtn){ submitBtn.disabled = false; submitBtn.innerHTML = original; }
-          alert((err && err.error) || 'Could not send. Please call 0920-857-0392 instead.');
+          let msg;
+          if(Array.isArray(body.results) && body.results.length){
+            const failed = body.results
+              .filter(r => !r.ok)
+              .map(r => `${r.name}: ${r.detail || 'failed'}`)
+              .join('\n');
+            msg = `Couldn't send your message right now.\n\n${failed}\n\nPlease call 0920-857-0392 — the line is open Mon–Sat, 9am–7pm.`;
+            console.error('[contact] all pipelines failed', body.results);
+          } else {
+            msg = (body && body.error) || 'Could not send. Please call 0920-857-0392 instead.';
+          }
+          alert(msg);
         }
       } catch(err){
         if(submitBtn){ submitBtn.disabled = false; submitBtn.innerHTML = original; }
+        console.error('[contact] network error', err);
         alert('Could not reach the server. Please call 0920-857-0392 instead.');
       }
     });
